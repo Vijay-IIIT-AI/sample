@@ -1,43 +1,48 @@
-
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { useRouter } from "next/navigation";
-import { User, Mail, Phone, Building, Link as LinkIcon, Tag, Save, Image as ImageIcon } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Checkbox } from "@/components/ui/checkbox";
-import { useToast } from "@/hooks/use-toast";
-import React from "react";
-
-// Mock available tags - in a real app, this would come from settings/API
-const availableTags = ["VIP", "Lead", "Bollywood", "Influencer", "Past Client", "Hot Lead", "Requires Follow-up", "Key Account", "Producer", "New Tag"];
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import { contactsApi } from '@/lib/api/contacts';
+import type { Tag } from '@/lib/api/tags';
+import { tagsApi } from '@/lib/api/tags';
+import { useRouter } from 'next/navigation';
+import { useToast } from '@/components/ui/use-toast';
+import { useState, useEffect } from 'react';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
   email: z.string().email("Invalid email address.").optional().or(z.literal('')),
   phone: z.string().optional(),
+  country_code: z.string().optional(),
+  whatsapp_number: z.string().optional(),
   company: z.string().optional(),
-  avatarUrl: z.string().url("Invalid URL for avatar.").optional().or(z.literal('')),
-  avatarHint: z.string().optional(), // For AI image search hint
-  tags: z.array(z.string()).optional().default([]),
+  avatar_url: z.string().url("Invalid URL for avatar.").optional().or(z.literal('')),
+  notes: z.string().optional(),
+  tag_ids: z.array(z.number()).optional().default([]),
 });
 
-export type ContactFormValues = z.infer<typeof contactFormSchema>;
+type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 interface ContactFormProps {
   contactId?: string;
@@ -48,210 +53,284 @@ interface ContactFormProps {
 export function ContactForm({ contactId, initialData, onSubmitSuccess }: ContactFormProps) {
   const router = useRouter();
   const { toast } = useToast();
-  const [avatarPreview, setAvatarPreview] = React.useState<string | undefined>(initialData?.avatarUrl);
+  const [loading, setLoading] = useState(false);
+  const [availableTags, setAvailableTags] = useState<Tag[]>([]);
+
+  useEffect(() => {
+    const loadTags = async () => {
+      try {
+        const tags = await tagsApi.getTags();
+        setAvailableTags(tags);
+      } catch (err) {
+        console.error('Failed to load tags:', err);
+        toast({
+          title: "Failed to load tags",
+          description: "Please try again later.",
+          variant: "destructive"
+        });
+      }
+    };
+    loadTags();
+  }, [toast]);
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
-      name: initialData?.name || "",
-      email: initialData?.email || "",
-      phone: initialData?.phone || "",
-      company: initialData?.company || "",
-      avatarUrl: initialData?.avatarUrl || "",
-      avatarHint: initialData?.avatarHint || "",
-      tags: initialData?.tags || [], // Ensure tags is an array
+      name: "",
+      email: "",
+      phone: "",
+      country_code: "",
+      whatsapp_number: "",
+      company: "",
+      avatar_url: "",
+      notes: "",
+      tag_ids: [],
+      ...initialData,
     },
   });
 
-  const watchedAvatarUrl = form.watch("avatarUrl");
-  React.useEffect(() => {
-    setAvatarPreview(watchedAvatarUrl);
-  }, [watchedAvatarUrl]);
-
   const onSubmit = async (data: ContactFormValues) => {
-    console.log("Contact data to submit:", data);
-    // Tags are already an array, no need to process comma-separated string
-    toast({
-      title: contactId ? "Contact Updated" : "Contact Created",
-      description: `Contact "${data.name}" has been successfully ${contactId ? 'updated' : 'added'}.`,
-    });
-
-    if (onSubmitSuccess) {
-      onSubmitSuccess();
-    } else {
-      router.push("/contacts");
+    try {
+      setLoading(true);
+      if (contactId) {
+        await contactsApi.updateContact(Number(contactId), data);
+      } else {
+        await contactsApi.createContact(data);
+      }
+      
+      toast({
+        title: `${contactId ? "Updated" : "Created"} contact successfully`,
+        description: `Contact ${data.name} has been ${contactId ? "updated" : "created"}.`,
+      });
+      
+      if (onSubmitSuccess) {
+        onSubmitSuccess();
+      } else {
+        router.push('/contacts');
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Error",
+        description: "Failed to save contact. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <Card className="shadow-lg">
-      <CardHeader>
-        <CardTitle>{contactId ? "Edit Contact" : "Add New Contact"}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <div className="flex flex-col items-center space-y-4 md:flex-row md:space-y-0 md:space-x-6">
-                <Avatar className="h-24 w-24">
-                    <AvatarImage src={avatarPreview || undefined} alt={form.getValues("name")} data-ai-hint={form.getValues("avatarHint") || "person"} />
-                    <AvatarFallback>
-                        {form.getValues("name") ? form.getValues("name").split(' ').map(n => n[0]).join('').toUpperCase() : <User className="h-10 w-10" />}
-                    </AvatarFallback>
-                </Avatar>
-                <div className="grid grid-cols-1 gap-4 flex-1">
-                    <FormField
-                    control={form.control}
-                    name="avatarUrl"
-                    render={({ field }) => (
-                        <FormItem>
-                        <FormLabel className="flex items-center"><LinkIcon className="mr-2 h-4 w-4" />Avatar URL (Optional)</FormLabel>
-                        <FormControl>
-                            <Input placeholder="https://placehold.co/100x100.png" {...field} />
-                        </FormControl>
-                        <FormDescription>Use services like https://placehold.co for placeholders.</FormDescription>
-                        <FormMessage />
-                        </FormItem>
-                    )}
-                    />
-                    <FormField
-                    control={form.control}
-                    name="avatarHint"
-                    render={({ field }) => (
-                        <FormItem>
-                        <FormLabel className="flex items-center"><ImageIcon className="mr-2 h-4 w-4" />Avatar AI Hint (Optional)</FormLabel>
-                        <FormControl>
-                            <Input placeholder="e.g., man smiling, woman professional" {...field} />
-                        </FormControl>
-                        <FormDescription>Keywords for AI to find a relevant image (max 2 words).</FormDescription>
-                        <FormMessage />
-                        </FormItem>
-                    )}
-                    />
-                </div>
-            </div>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <div className="grid gap-4 md:grid-cols-2">
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter name" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input type="email" placeholder="Enter email" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
 
+        <div className="grid gap-4 md:grid-cols-2">
+          <FormField
+            control={form.control}
+            name="phone"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Phone</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter phone number" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="company"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Company</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter company name" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
 
+        <div className="grid gap-4 md:grid-cols-2">
+          <div className="space-y-4">
             <FormField
               control={form.control}
-              name="name"
+              name="country_code"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="flex items-center"><User className="mr-2 h-4 w-4" />Full Name</FormLabel>
+                  <FormLabel>Country</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g., Jane Doe" {...field} />
+                    <Select
+                      value={field.value}
+                      onValueChange={field.onChange}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select country" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="+1">United States (+1)</SelectItem>
+                        <SelectItem value="+44">United Kingdom (+44)</SelectItem>
+                        <SelectItem value="+91">India (+91)</SelectItem>
+                        <SelectItem value="+86">China (+86)</SelectItem>
+                        <SelectItem value="+81">Japan (+81)</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                    <FormItem>
-                    <FormLabel className="flex items-center"><Mail className="mr-2 h-4 w-4" />Email (Optional)</FormLabel>
-                    <FormControl>
-                        <Input type="email" placeholder="you@example.com" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                    </FormItem>
-                )}
-                />
-                <FormField
-                control={form.control}
-                name="phone"
-                render={({ field }) => (
-                    <FormItem>
-                    <FormLabel className="flex items-center"><Phone className="mr-2 h-4 w-4" />Phone (Optional)</FormLabel>
-                    <FormControl>
-                        <Input placeholder="+91 12345 67890" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                    </FormItem>
-                )}
-                />
-            </div>
-
             <FormField
               control={form.control}
-              name="company"
+              name="whatsapp_number"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="flex items-center"><Building className="mr-2 h-4 w-4" />Company (Optional)</FormLabel>
+                  <FormLabel>WhatsApp Number</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g., Yabily Inc." {...field} />
+                    <Input placeholder="Enter WhatsApp number" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
+          </div>
+          <FormField
+            control={form.control}
+            name="avatar_url"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Avatar URL</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter avatar URL" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
 
-            <FormField
-              control={form.control}
-              name="tags"
-              render={({ field }) => (
-                <FormItem>
-                  <div className="mb-4">
-                    <FormLabel className="text-base flex items-center"><Tag className="mr-2 h-4 w-4" />Tags</FormLabel>
-                    <FormDescription>
-                      Select one or more tags for this contact.
-                    </FormDescription>
-                  </div>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                    {availableTags.map((tag) => (
-                      <FormField
-                        key={tag}
-                        control={form.control}
-                        name="tags"
-                        render={({ field }) => {
-                          return (
-                            <FormItem
-                              key={tag}
-                              className="flex flex-row items-start space-x-3 space-y-0"
-                            >
-                              <FormControl>
-                                <Checkbox
-                                  checked={field.value?.includes(tag)}
-                                  onCheckedChange={(checked) => {
-                                    return checked
-                                      ? field.onChange([...(field.value || []), tag])
-                                      : field.onChange(
-                                          (field.value || []).filter(
-                                            (value) => value !== tag
-                                          )
-                                        );
-                                  }}
-                                />
-                              </FormControl>
-                              <FormLabel className="font-normal">
-                                {tag}
-                              </FormLabel>
-                            </FormItem>
-                          );
-                        }}
-                      />
-                    ))}
-                  </div>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+        <FormField
+          control={form.control}
+          name="tag_ids"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Tags</FormLabel>
+              <div className="flex flex-wrap gap-2 mb-2">
+                {field.value.map((tagId) => {
+                  const tag = availableTags.find((t) => t.id === tagId);
+                  if (!tag) return null;
+                  return (
+                    <Badge
+                      key={tag.id}
+                      variant="secondary"
+                      style={{
+                        backgroundColor: tag.color + '20',
+                        color: tag.color,
+                      }}
+                      onClick={() => {
+                        field.onChange(field.value.filter((id) => id !== tagId));
+                      }}
+                      className="cursor-pointer"
+                    >
+                      {tag.name} ×
+                    </Badge>
+                  );
+                })}
+              </div>
+              <Select
+                onValueChange={(value) => {
+                  const tagId = Number(value);
+                  if (!field.value.includes(tagId)) {
+                    field.onChange([...field.value, tagId]);
+                  }
+                }}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Add a tag" />
+                </SelectTrigger>
+                <SelectContent>
+                  {availableTags.map((tag) => (
+                    <SelectItem
+                      key={tag.id}
+                      value={tag.id.toString()}
+                      disabled={field.value.includes(tag.id)}
+                    >
+                      <div className="flex items-center gap-2">
+                        <div
+                          className="w-2 h-2 rounded-full"
+                          style={{ backgroundColor: tag.color }}
+                        />
+                        {tag.name}
+                      </div>
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
+        <FormField
+          control={form.control}
+          name="notes"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Notes</FormLabel>
+              <FormControl>
+                <Textarea
+                  placeholder="Add any additional notes about this contact"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-            <div className="flex justify-end space-x-2 pt-4">
-              <Button type="button" variant="outline" onClick={() => router.back()}>
-                Cancel
-              </Button>
-              <Button type="submit">
-                <Save className="mr-2 h-4 w-4" />
-                {contactId ? "Save Changes" : "Create Contact"}
-              </Button>
-            </div>
-          </form>
-        </Form>
-      </CardContent>
-    </Card>
+        <div className="flex justify-end gap-4">
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => router.push('/contacts')}
+          >
+            Cancel
+          </Button>
+          <Button type="submit" disabled={loading}>
+            {loading ? 'Saving...' : contactId ? 'Update Contact' : 'Create Contact'}
+          </Button>
+        </div>
+      </form>
+    </Form>
   );
 }

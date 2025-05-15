@@ -1,9 +1,9 @@
 
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-// import Image from "next/image"; // Not used directly if Avatar handles it
+import { useRouter } from "next/navigation";
 import { PageWrapper } from "@/components/shared/page-wrapper";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,96 +12,46 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { MoreHorizontal, Search, Edit3, Trash2, UserPlus, Tag, Mail, Phone, Building, CalendarClock, Eye } from "lucide-react"; // Added Eye
-import { useToast } from "@/hooks/use-toast";
+import { MoreHorizontal, Search, Edit3, Trash2, UserPlus, Tag, Mail, Phone, Building, CalendarClock, Eye } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 import { Separator } from "@/components/ui/separator";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface CustomField {
   label: string;
   value: string | number | boolean;
 }
 
-interface Contact {
-  id: string;
-  name: string;
-  email?: string;
-  phone?: string;
-  avatarUrl?: string;
-  avatarHint?: string;
-  company?: string;
-  tags: string[];
-  customFields: CustomField[];
-  lastContacted: string; 
-  createdAt: string;
+import { Contact } from '@/lib/api/contacts';
+import { contactsApi } from '@/lib/api/contacts';
+import { tagsApi } from '@/lib/api/tags';
+import type { Tag } from '@/lib/api/tags';
+
+interface CustomField {
+  label: string;
+  value: string | number | boolean;
 }
 
-const mockContacts: Contact[] = [
-  {
-    id: "contact1",
-    name: "Alia Bhatt",
-    email: "alia.b@example.com",
-    phone: "+91 98765 43210",
-    avatarUrl: "https://placehold.co/100x100.png",
-    avatarHint: "woman smiling",
-    company: "Sunshine Productions",
-    tags: ["VIP", "Lead", "Bollywood"],
-    customFields: [
-      { label: "Lead Source", value: "Referral" },
-      { label: "Industry", value: "Entertainment" },
-      { label: "Account Manager", value: "RK" },
-    ],
-    lastContacted: "2024-07-10",
-    createdAt: "2023-01-15",
-  },
-  {
-    id: "contact2",
-    name: "Ranbir Kapoor",
-    email: "ranbir.k@example.com",
-    avatarUrl: "https://placehold.co/100x100.png",
-    avatarHint: "man serious",
-    company: "Dharma Productions",
-    tags: ["Influencer", "Past Client"],
-    customFields: [
-      { label: "Subscription Tier", value: "Premium" },
-      { label: "Last Purchase", value: "2024-05-20" },
-    ],
-    lastContacted: "2024-06-25",
-    createdAt: "2022-11-05",
-  },
-  {
-    id: "contact3",
-    name: "Deepika Padukone",
-    phone: "+91 99887 76655",
-    avatarUrl: "https://placehold.co/100x100.png",
-    avatarHint: "woman professional",
-    company: "Ka Productions",
-    tags: ["Hot Lead", "Requires Follow-up"],
-    customFields: [
-      { label: "Preferred Contact Method", value: "Email" },
-      { label: "Project Interest", value: "Brand Endorsement" },
-    ],
-    lastContacted: "2024-07-15",
-    createdAt: "2023-03-20",
-  },
-  {
-    id: "contact4",
-    name: "Shah Rukh Khan",
-    email: "srk.office@example.com",
-    avatarUrl: "https://placehold.co/100x100.png",
-    avatarHint: "man iconic",
-    company: "Red Chillies Entertainment",
-    tags: ["Key Account", "Bollywood", "Producer"],
-    customFields: [
-      { label: "Net Worth (Est.)", value: "₹6000 Cr" },
-      { label: "Next Availability", value: "Q4 2024" },
-    ],
-    lastContacted: "2024-07-01",
-    createdAt: "2021-08-10",
-  },
-];
-
-function ContactCardActions({ contactId }: { contactId: string }) {
+export default function ContactsPage() {
+  const [contacts, setContacts] = useState<Contact[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [availableTags, setAvailableTags] = useState<Tag[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedTag, setSelectedTag] = useState<string>("all");
   const { toast } = useToast();
+
+function ContactCardActions({ contactId, onDelete }: { contactId: number; onDelete: (id: number) => Promise<void> }) {
+  const router = useRouter();
+
+  const handleDelete = async () => {
+    if (window.confirm('Are you sure you want to delete this contact?')) {
+      await onDelete(contactId);
+    }
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -112,16 +62,19 @@ function ContactCardActions({ contactId }: { contactId: string }) {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem asChild>
-            <Link href={`/contacts/${contactId}/edit`}>
-                <Edit3 className="mr-2 h-4 w-4" /> Edit
-            </Link>
+          <Link href={`/contacts/${contactId}/edit`}>
+            <Edit3 className="mr-2 h-4 w-4" /> Edit
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link href={`/contacts/${contactId}`}>
+            <Eye className="mr-2 h-4 w-4" /> View Details
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuItem 
-            onClick={() => toast({ title: "View Details (Mock)", description: `Viewing details for contact ID: ${contactId}. This would typically navigate to a dedicated contact detail page.` })}
+          className="text-destructive focus:text-destructive-foreground focus:bg-destructive"
+          onClick={handleDelete}
         >
-          <Eye className="mr-2 h-4 w-4" /> View Details
-        </DropdownMenuItem>
-        <DropdownMenuItem className="text-destructive focus:text-destructive-foreground focus:bg-destructive" onClick={() => toast({ title: "Delete Contact (Mock)", description: `Deleting contact ID: ${contactId}`, variant: "destructive" })}>
           <Trash2 className="mr-2 h-4 w-4" /> Delete
         </DropdownMenuItem>
       </DropdownMenuContent>
@@ -132,26 +85,67 @@ function ContactCardActions({ contactId }: { contactId: string }) {
 export default function ContactsPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTag, setSelectedTag] = useState<string>("all");
+  const { toast } = useToast();
+  const router = useRouter();
 
-  const allTags = useMemo(() => {
-    const tagsSet = new Set<string>();
-    mockContacts.forEach(contact => contact.tags.forEach(tag => tagsSet.add(tag)));
-    return ["all", ...Array.from(tagsSet)];
+  useEffect(() => {
+    const loadTags = async () => {
+      try {
+        const tags = await tagsApi.getTags();
+        setAvailableTags(tags);
+      } catch (err) {
+        console.error('Failed to load tags:', err);
+        setError('Failed to load tags. Please try again later.');
+      }
+    };
+    loadTags();
   }, []);
 
-  const filteredContacts = useMemo(() => {
-    return mockContacts.filter(contact => {
-      const nameMatch = contact.name.toLowerCase().includes(searchTerm.toLowerCase());
-      const emailMatch = contact.email?.toLowerCase().includes(searchTerm.toLowerCase());
-      const phoneMatch = contact.phone?.includes(searchTerm);
-      const companyMatch = contact.company?.toLowerCase().includes(searchTerm.toLowerCase());
-      
-      const matchesSearchTerm = nameMatch || emailMatch || phoneMatch || companyMatch;
-      const matchesTag = selectedTag === "all" || contact.tags.includes(selectedTag);
-      
-      return matchesSearchTerm && matchesTag;
-    });
-  }, [searchTerm, selectedTag]);
+  useEffect(() => {
+    const loadContacts = async () => {
+      try {
+        setLoading(true);
+        const result = await contactsApi.getContacts({
+          page,
+          search: searchTerm || undefined,
+          tag_id: selectedTag === 'all' ? undefined : Number(selectedTag)
+        });
+        setContacts(result.contacts);
+        setTotalPages(result.total_pages);
+      } catch (err) {
+        console.error('Failed to load contacts:', err);
+        setError('Failed to load contacts. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadContacts();
+  }, [page, searchTerm, selectedTag]);
+
+  const handleDeleteContact = async (contactId: number) => {
+    try {
+      await contactsApi.deleteContact(contactId);
+      toast({
+        title: "Contact deleted successfully",
+        description: "The contact has been removed from your list."
+      });
+      // Refresh contacts list
+      const result = await contactsApi.getContacts({
+        page,
+        search: searchTerm || undefined,
+        tag_id: selectedTag === 'all' ? undefined : Number(selectedTag)
+      });
+      setContacts(result.contacts);
+      setTotalPages(result.total_pages);
+    } catch (err) {
+      console.error('Failed to delete contact:', err);
+      toast({
+        title: "Failed to delete contact",
+        description: "Please try again later.",
+        variant: "destructive"
+      });
+    }
+  };
 
   return (
     <PageWrapper
@@ -176,13 +170,25 @@ export default function ContactsPage() {
           />
         </div>
         <div className="flex gap-2 w-full md:w-auto">
-          <Select value={selectedTag} onValueChange={setSelectedTag}>
+          <Select 
+            value={selectedTag} 
+            onValueChange={setSelectedTag}
+          >
             <SelectTrigger className="w-full md:w-[180px]">
               <SelectValue placeholder="Filter by Tag" />
             </SelectTrigger>
             <SelectContent>
-              {allTags.map(tag => (
-                <SelectItem key={tag} value={tag}>{tag === "all" ? "All Tags" : tag}</SelectItem>
+              <SelectItem value="all">All Tags</SelectItem>
+              {availableTags.map(tag => (
+                <SelectItem key={tag.id} value={tag.id.toString()}>
+                  <div className="flex items-center gap-2">
+                    <div 
+                      className="w-2 h-2 rounded-full" 
+                      style={{ backgroundColor: tag.color }}
+                    />
+                    {tag.name}
+                  </div>
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>
@@ -190,15 +196,52 @@ export default function ContactsPage() {
         </div>
       </div>
 
-      {filteredContacts.length > 0 ? (
+      {loading ? (
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {filteredContacts.map((contact) => (
+          {[1, 2, 3, 4].map((i) => (
+            <Card key={i} className="flex flex-col shadow-lg">
+              <CardHeader className="pb-4">
+                <div className="flex items-start justify-between">
+                  <div className="flex items-center gap-3">
+                    <Skeleton className="h-12 w-12 rounded-full" />
+                    <div>
+                      <Skeleton className="h-5 w-32" />
+                      <Skeleton className="h-4 w-24 mt-1" />
+                    </div>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="flex-grow space-y-3">
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-3/4" />
+                <Skeleton className="h-4 w-1/2" />
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      ) : error ? (
+        <Card className="shadow-lg">
+          <CardContent className="pt-6">
+            <p className="text-center text-destructive">{error}</p>
+            <Button 
+              onClick={() => window.location.reload()} 
+              variant="outline" 
+              className="mt-4 mx-auto block"
+            >
+              Try Again
+            </Button>
+          </CardContent>
+        </Card>
+      ) : contacts.length > 0 ? (
+        <>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {contacts.map((contact) => (
             <Card key={contact.id} className="flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300">
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
                     <Avatar className="h-12 w-12">
-                      <AvatarImage src={contact.avatarUrl || undefined} alt={contact.name} data-ai-hint={contact.avatarHint || 'person'} />
+                      <AvatarImage src={contact.avatar_url || undefined} alt={contact.name} />
                       <AvatarFallback>{contact.name.split(' ').map(n => n[0]).join('').toUpperCase()}</AvatarFallback>
                     </Avatar>
                     <div>
@@ -206,7 +249,7 @@ export default function ContactsPage() {
                       {contact.company && <CardDescription className="text-xs flex items-center mt-0.5"><Building className="h-3 w-3 mr-1 text-muted-foreground" />{contact.company}</CardDescription>}
                     </div>
                   </div>
-                  <ContactCardActions contactId={contact.id} />
+                  <ContactCardActions contactId={contact.id} onDelete={handleDeleteContact} />
                 </div>
               </CardHeader>
               <CardContent className="flex-grow space-y-3 text-sm">
@@ -223,29 +266,21 @@ export default function ContactsPage() {
                   </div>
                 )}
                 
-                {contact.tags.length > 0 && (
+                {contact.tags && contact.tags.length > 0 && (
                   <div className="pt-1">
                     <h4 className="text-xs font-medium text-foreground mb-1.5 flex items-center"><Tag className="h-3.5 w-3.5 mr-1 text-primary/70"/>Tags:</h4>
                     <div className="flex flex-wrap gap-1.5">
                       {contact.tags.map(tag => (
-                        <Badge key={tag} variant="secondary" className="text-xs">{tag}</Badge>
+                        <Badge 
+                          key={tag.id} 
+                          variant="secondary" 
+                          className="text-xs"
+                          style={{ backgroundColor: tag.color + '20', color: tag.color }}
+                        >
+                          {tag.name}
+                        </Badge>
                       ))}
                     </div>
-                  </div>
-                )}
-
-                {contact.customFields.length > 0 && (
-                  <div className="pt-2">
-                    <h4 className="text-xs font-medium text-foreground mb-1.5">Custom Info:</h4>
-                    <ul className="space-y-1 text-xs text-muted-foreground list-none">
-                      {contact.customFields.slice(0, 3).map(field => ( // Show up to 3 custom fields
-                        <li key={field.label} className="flex justify-between">
-                          <span className="font-medium text-foreground/80">{field.label}:</span>
-                          <span className="truncate ml-2 text-right">{String(field.value)}</span>
-                        </li>
-                      ))}
-                       {contact.customFields.length > 3 && <li className="text-center text-primary/80">...and more</li>}
-                    </ul>
                   </div>
                 )}
               </CardContent>
@@ -253,21 +288,43 @@ export default function ContactsPage() {
               <CardFooter className="text-xs text-muted-foreground flex justify-between items-center pt-3 pb-4 px-4">
                   <div className="flex items-center">
                     <CalendarClock className="h-3.5 w-3.5 mr-1.5"/>
-                    Last touch: {new Date(contact.lastContacted).toLocaleDateString()}
+                    Created: {new Date(contact.created_at).toLocaleDateString()}
                   </div>
-                  {/* Optionally, add a view details button here if preferred over dropdown */}
-                  {/* <Link href={`/contacts/${contact.id}/edit`} passHref><Button variant="link" size="sm">View/Edit</Button></Link> */}
               </CardFooter>
             </Card>
           ))}
-        </div>
+          </div>
+          {totalPages > 1 && (
+            <div className="mt-6 flex justify-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setPage(p => Math.max(1, p - 1))}
+                disabled={page === 1}
+              >
+                Previous
+              </Button>
+              <span className="py-2 px-3 text-sm">
+                Page {page} of {totalPages}
+              </span>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+                disabled={page === totalPages}
+              >
+                Next
+              </Button>
+            </div>
+          )}
+        </>
       ) : (
         <Card className="shadow-lg col-span-full">
-            <CardContent className="pt-6">
-                <p className="text-center text-muted-foreground">
-                    No contacts found matching your criteria. Try adjusting your search or filters.
-                </p>
-            </CardContent>
+          <CardContent className="pt-6">
+            <p className="text-center text-muted-foreground">
+              No contacts found matching your criteria. Try adjusting your search or filters.
+            </p>
+          </CardContent>
         </Card>
       )}
     </PageWrapper>
