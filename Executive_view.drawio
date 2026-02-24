@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" version="21.0.0" type="device">
+  <diagram name="Executive View" id="exec-view">
+    <mxGraphModel dx="1200" dy="800" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- TITLE -->
+        <mxCell id="title" value="AI RAG &amp; Tool Platform" style="text;html=1;fontSize=26;fontStyle=1;fontColor=#0F172A;align=left;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="40" y="24" width="500" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Executive Architecture Overview" style="text;html=1;fontSize=12;fontStyle=2;fontColor=#64748B;align=left;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="400" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- ─────────────────────────────────────────── -->
+        <!-- ROW 1: USER -->
+        <!-- ─────────────────────────────────────────── -->
+        <mxCell id="user" value="&lt;b style='font-size:13px;'&gt;User&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:10px;color:#1e40af;'&gt;Web / Mobile Browser&lt;/font&gt;" style="shape=mxgraph.basic.person;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#2563EB;strokeWidth=2;fontSize=11;fontColor=#1e3a5f;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="610" y="90" width="80" height="96" as="geometry" />
+        </mxCell>
+
+        <!-- ─────────────────────────────────────────── -->
+        <!-- ROW 2: UI THREE PANELS -->
+        <!-- ─────────────────────────────────────────── -->
+
+        <!-- Left Panel -->
+        <mxCell id="ui-left" value="&lt;b&gt;Knowledge Base&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px;color:#1e40af;'&gt;Personal RAG&lt;br&gt;Shared KB&lt;br&gt;Chat History&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#BFDBFE;strokeColor=#2563EB;strokeWidth=2;fontSize=11;fontColor=#1e3a5f;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="160" y="260" width="160" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Chat Center -->
+        <mxCell id="ui-chat" value="&lt;b&gt;Chat&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px;color:#1e40af;'&gt;RAG · Normal Q&amp;A&lt;br&gt;Streaming responses&lt;br&gt;Conversation history&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#BFDBFE;strokeColor=#1D4ED8;strokeWidth=3;fontSize=11;fontColor=#1e3a5f;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="360" y="260" width="180" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Right Panel -->
+        <mxCell id="ui-right" value="&lt;b&gt;Tools + Outputs&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px;color:#1e40af;'&gt;Translation · Summary&lt;br&gt;Excel Analytics&lt;br&gt;Generated Outputs&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#BFDBFE;strokeColor=#2563EB;strokeWidth=2;fontSize=11;fontColor=#1e3a5f;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="580" y="260" width="160" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- UI bounding box label -->
+        <mxCell id="ui-label" value="Web Interface" style="text;html=1;fontSize=10;fontStyle=1;fontColor=#1D4ED8;align=center;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="160" y="242" width="580" height="18" as="geometry" />
+        </mxCell>
+
+        <!-- ─────────────────────────────────────────── -->
+        <!-- ROW 3: BACKEND + VLLM -->
+        <!-- ─────────────────────────────────────────── -->
+
+        <!-- Flask Backend -->
+        <mxCell id="backend" value="&lt;b&gt;Backend Platform&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px;color:#4c1d95;'&gt;API Gateway · Auth · Chat Orchestrator&lt;br&gt;Hybrid Retrieval (RRF Fusion)&lt;br&gt;Upload Manager · Tool Router&lt;br&gt;WebSocket Manager&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#EDE9FE;strokeColor=#7C3AED;strokeWidth=2.5;fontSize=11;fontColor=#3B0764;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="210" y="440" width="380" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- vLLM -->
+        <mxCell id="vllm" value="&lt;b&gt;vLLM Model Server&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px;color:#164e63;'&gt;Dedicated GPU Microservice&lt;br&gt;Chat / Completion Model&lt;br&gt;Embedding Model&lt;br&gt;OpenAI-compatible API&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#CFFAFE;strokeColor=#0891B2;strokeWidth=2.5;fontSize=11;fontColor=#164E63;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="660" y="440" width="220" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- ─────────────────────────────────────────── -->
+        <!-- ROW 4: ASYNC PIPELINE -->
+        <!-- ─────────────────────────────────────────── -->
+
+        <!-- Async box -->
+        <mxCell id="async" value="&lt;b&gt;Async Processing Pipeline&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px;color:#92400e;'&gt;RabbitMQ &amp;nbsp;→&amp;nbsp; Celery Workers &amp;nbsp;→&amp;nbsp; Docling Service (Parse · Chunk · Embed)&lt;br&gt;All file uploads (RAG · Translation · Analytics · Summary) flow through here&lt;br&gt;Real-time status via Redis pub/sub → WebSocket → User&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2.5;fontSize=11;fontColor=#451A03;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="210" y="640" width="670" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- ─────────────────────────────────────────── -->
+        <!-- ROW 5: DATA LAYER -->
+        <!-- ─────────────────────────────────────────── -->
+
+        <mxCell id="dl-milvus" value="&lt;b&gt;Milvus&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px;'&gt;Vector DB&lt;br&gt;Semantic Search&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#BBF7D0;strokeColor=#15803D;strokeWidth=2;fontSize=10;fontColor=#14532D;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="210" y="828" width="130" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="dl-es" value="&lt;b&gt;Elasticsearch&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px;'&gt;Keyword Search&lt;br&gt;Full-text Index&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#BBF7D0;strokeColor=#15803D;strokeWidth=2;fontSize=10;fontColor=#14532D;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="370" y="828" width="130" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="dl-minio" value="&lt;b&gt;MinIO&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px;'&gt;Object Storage&lt;br&gt;Files &amp; Outputs&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#BBF7D0;strokeColor=#15803D;strokeWidth=2;fontSize=10;fontColor=#14532D;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="530" y="828" width="130" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="dl-postgres" value="&lt;b&gt;PostgreSQL&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px;'&gt;Users &amp; Sessions&lt;br&gt;Jobs &amp; History&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#BBF7D0;strokeColor=#15803D;strokeWidth=2;fontSize=10;fontColor=#14532D;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="690" y="828" width="130" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Data layer label -->
+        <mxCell id="dl-label" value="Data Layer" style="text;html=1;fontSize=10;fontStyle=1;fontColor=#166534;align=left;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="210" y="812" width="200" height="18" as="geometry" />
+        </mxCell>
+
+        <!-- ─────────────────────────────────────────── -->
+        <!-- ARROWS -->
+        <!-- ─────────────────────────────────────────── -->
+
+        <!-- User → UI panels -->
+        <mxCell id="a1" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#2563EB;strokeWidth=2.5;endArrow=block;endFill=1;" edge="1" parent="1" source="user" target="ui-chat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a1b" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#2563EB;strokeWidth=1.5;endArrow=block;endFill=1;dashed=1;" edge="1" parent="1" source="user" target="ui-left">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a1c" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#2563EB;strokeWidth=1.5;endArrow=block;endFill=1;dashed=1;" edge="1" parent="1" source="user" target="ui-right">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- UI → Backend -->
+        <mxCell id="a2" value="requests" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.3;entryY=0;entryDx=0;entryDy=0;strokeColor=#7C3AED;strokeWidth=2.5;endArrow=block;endFill=1;fontSize=9;fontColor=#5B21B6;fontFamily=Helvetica;" edge="1" parent="1" source="ui-chat" target="backend">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a2b" value="uploads" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.6;entryY=0;entryDx=0;entryDy=0;strokeColor=#7C3AED;strokeWidth=2;endArrow=block;endFill=1;fontSize=9;fontColor=#5B21B6;fontFamily=Helvetica;" edge="1" parent="1" source="ui-right" target="backend">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Backend → vLLM -->
+        <mxCell id="a3" value="generate / embed" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#0891B2;strokeWidth=2.5;endArrow=block;endFill=1;fontSize=9;fontColor=#164E63;fontFamily=Helvetica;" edge="1" parent="1" source="backend" target="vllm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Backend → Async -->
+        <mxCell id="a4" value="enqueue job" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.3;entryY=0;entryDx=0;entryDy=0;strokeColor=#D97706;strokeWidth=2.5;endArrow=block;endFill=1;fontSize=9;fontColor=#92400E;fontFamily=Helvetica;" edge="1" parent="1" source="backend" target="async">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Async → vLLM (embeddings) -->
+        <mxCell id="a4b" value="embed chunks" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeColor=#0891B2;strokeWidth=1.5;endArrow=block;endFill=1;fontSize=9;fontColor=#164E63;dashed=1;fontFamily=Helvetica;" edge="1" parent="1" source="async" target="vllm">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1010" y="695" />
+              <mxPoint x="770" y="695" />
+              <mxPoint x="770" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Async → Data -->
+        <mxCell id="a5" value="index + store" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#15803D;strokeWidth=2.5;endArrow=block;endFill=1;fontSize=9;fontColor=#14532D;fontFamily=Helvetica;" edge="1" parent="1" source="async" target="dl-es">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Backend → Data (retrieval) -->
+        <mxCell id="a6" value="retrieve" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.2;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#15803D;strokeWidth=2;endArrow=block;endFill=1;fontSize=9;fontColor=#14532D;dashed=1;fontFamily=Helvetica;" edge="1" parent="1" source="backend" target="dl-milvus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Return path: Data → Backend → UI (WebSocket) -->
+        <mxCell id="a7" value="stream results + status updates (WebSocket)" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#0891B2;strokeWidth=3;endArrow=block;endFill=1;fontSize=9;fontColor=#0e7490;fontStyle=1;fontFamily=Helvetica;" edge="1" parent="1" source="backend" target="ui-left">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="140" y="500" />
+              <mxPoint x="140" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ─────────────────────────────────────────── -->
+        <!-- KEY CALLOUTS (right side) -->
+        <!-- ─────────────────────────────────────────── -->
+
+        <mxCell id="note1" value="&lt;b&gt;3 Chat Modes&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px;color:#1e40af;'&gt;① Personal RAG (your files)&lt;br&gt;② Shared KB (company docs)&lt;br&gt;③ Normal Q&amp;A (no RAG)&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#3B82F6;strokeWidth=1.5;fontSize=10;fontColor=#1e3a5f;align=left;spacingLeft=8;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="960" y="252" width="195" height="115" as="geometry" />
+        </mxCell>
+
+        <mxCell id="note2" value="&lt;b&gt;Unified Upload Pipeline&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px;color:#92400e;'&gt;Every file upload (RAG, Translation,&lt;br&gt;Analytics, Summary) follows the&lt;br&gt;SAME queue pipeline — consistent&lt;br&gt;tracking, retry &amp; status updates&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=1.5;fontSize=10;fontColor=#451A03;align=left;spacingLeft=8;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="960" y="405" width="195" height="130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="note3" value="&lt;b&gt;Multi-Tenant Isolation&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px;color:#14532d;'&gt;Each user's data is fully isolated&lt;br&gt;at the vector DB, search index,&lt;br&gt;file storage &amp; database level&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#15803D;strokeWidth=1.5;fontSize=10;fontColor=#14532D;align=left;spacingLeft=8;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="960" y="575" width="195" height="105" as="geometry" />
+        </mxCell>
+
+        <mxCell id="note4" value="&lt;b&gt;Real-time Everything&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px;color:#0e7490;'&gt;One persistent WebSocket per user&lt;br&gt;delivers: LLM tokens, job progress,&lt;br&gt;completion alerts &amp; error notices&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#CFFAFE;strokeColor=#0891B2;strokeWidth=1.5;fontSize=10;fontColor=#164E63;align=left;spacingLeft=8;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="960" y="720" width="195" height="105" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,377 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36" version="29.5.2">
+  <diagram name="AI RAG Platform Architecture v3" id="ai-rag-v3-clean">
+    <mxGraphModel dx="5690" dy="1554" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1360" math="0" shadow="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;fontSize=22;fontStyle=1;fontColor=#1e3a5f;align=left;fontFamily=Helvetica;" value="&amp;nbsp;THOR System Architecture" vertex="1">
+          <mxGeometry height="35" width="700" x="20" y="15" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" parent="1" style="text;html=1;fontSize=11;fontStyle=2;fontColor=#64748b;align=left;fontFamily=Helvetica;" value="C4 Model  ·  Hybrid RAG  ·  Event-Driven  ·  Multi-Tenant  ·  vLLM Model Server" vertex="1">
+          <mxGeometry height="22" width="700" x="20" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="bg-ui" parent="1" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#93C5FD;strokeWidth=2;opacity=60;pointerEvents=0;" value="" vertex="1">
+          <mxGeometry height="318" width="1600" x="20" y="82" as="geometry" />
+        </mxCell>
+        <mxCell id="label-ui" parent="1" style="text;html=1;fontSize=10;fontStyle=1;fontColor=#1D4ED8;align=center;verticalAlign=middle;rotation=-90;fontFamily=Helvetica;" value="UI LAYER" vertex="1">
+          <mxGeometry height="318" width="55" x="20" y="82" as="geometry" />
+        </mxCell>
+        <mxCell id="bg-gw" parent="1" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;fillColor=#FDF2F8;strokeColor=#F9A8D4;strokeWidth=2;opacity=60;pointerEvents=0;" value="" vertex="1">
+          <mxGeometry height="108" width="1600" x="20" y="418" as="geometry" />
+        </mxCell>
+        <mxCell id="label-gw" parent="1" style="text;html=1;fontSize=10;fontStyle=1;fontColor=#9D174D;align=center;verticalAlign=middle;rotation=-90;fontFamily=Helvetica;" value="API GATEWAY" vertex="1">
+          <mxGeometry height="108" width="55" x="20" y="418" as="geometry" />
+        </mxCell>
+        <mxCell id="bg-be" parent="1" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;fillColor=#F5F3FF;strokeColor=#C4B5FD;strokeWidth=2;opacity=60;pointerEvents=0;" value="" vertex="1">
+          <mxGeometry height="222" width="1600" x="20" y="544" as="geometry" />
+        </mxCell>
+        <mxCell id="label-be" parent="1" style="text;html=1;fontSize=10;fontStyle=1;fontColor=#5B21B6;align=center;verticalAlign=middle;rotation=-90;fontFamily=Helvetica;" value="FLASK BACKEND&#xa;(Orchestrator)" vertex="1">
+          <mxGeometry height="222" width="55" x="20" y="544" as="geometry" />
+        </mxCell>
+        <mxCell id="bg-async" parent="1" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#FCD34D;strokeWidth=2;opacity=60;pointerEvents=0;" value="" vertex="1">
+          <mxGeometry height="298" width="1600" x="20" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="label-async" parent="1" style="text;html=1;fontSize=10;fontStyle=1;fontColor=#B45309;align=center;verticalAlign=middle;rotation=-90;fontFamily=Helvetica;" value="ASYNC PIPELINE" vertex="1">
+          <mxGeometry height="298" width="55" x="20" y="784" as="geometry" />
+        </mxCell>
+        <mxCell id="bg-data" parent="1" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;fillColor=#F0FDF4;strokeColor=#86EFAC;strokeWidth=2;opacity=60;pointerEvents=0;" value="" vertex="1">
+          <mxGeometry height="200" width="1600" x="15" y="1300" as="geometry" />
+        </mxCell>
+        <mxCell id="label-data" parent="1" style="text;html=1;fontSize=10;fontStyle=1;fontColor=#166534;align=center;verticalAlign=middle;rotation=-90;fontFamily=Helvetica;" value="DATA LAYER" vertex="1">
+          <mxGeometry height="200" width="55" x="10" y="1310" as="geometry" />
+        </mxCell>
+        <mxCell id="left-panel" parent="1" style="swimlane;startSize=26;fillColor=#DBEAFE;strokeColor=#3B82F6;strokeWidth=2;fontStyle=1;fontSize=10;fontColor=#1D4ED8;rounded=1;arcSize=4;fontFamily=Helvetica;" value="LEFT PANEL" vertex="1">
+          <mxGeometry height="290" width="360" x="80" y="97" as="geometry" />
+        </mxCell>
+        <mxCell id="chat-history" parent="left-panel" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#BFDBFE;strokeColor=#2563EB;strokeWidth=1.5;fontSize=11;fontColor=#1e3a5f;fontFamily=Helvetica;" value="&lt;b&gt;Chat History&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#1e40af;&quot;&gt;Per-user conversation log&lt;br&gt;Search &amp; resume past chats&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="335" x="10" y="32" as="geometry" />
+        </mxCell>
+        <mxCell id="personal-rag" parent="left-panel" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#BFDBFE;strokeColor=#2563EB;strokeWidth=1.5;fontSize=11;fontColor=#1e3a5f;fontFamily=Helvetica;" value="&lt;b&gt;Personal RAG&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#1e40af;&quot;&gt;User-uploaded documents&lt;br&gt;Select files to query&lt;/font&gt;" vertex="1">
+          <mxGeometry height="148" width="158" x="10" y="128" as="geometry" />
+        </mxCell>
+        <mxCell id="common-kb" parent="left-panel" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#BFDBFE;strokeColor=#2563EB;strokeWidth=1.5;fontSize=11;fontColor=#1e3a5f;fontFamily=Helvetica;" value="&lt;b&gt;Common KB&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#1e40af;&quot;&gt;Shared knowledge base&lt;br&gt;All users access&lt;br&gt;Admin-managed&lt;/font&gt;" vertex="1">
+          <mxGeometry height="148" width="158" x="182" y="128" as="geometry" />
+        </mxCell>
+        <mxCell id="chat-center" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#BFDBFE;strokeColor=#1D4ED8;strokeWidth=2.5;fontSize=11;fontColor=#1e3a5f;fontFamily=Helvetica;" value="&lt;b style=&quot;font-size:13px;&quot;&gt;Chat&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 9px; color: rgb(30, 64, 175);&quot;&gt;Streaming UI&lt;br&gt;—&lt;br&gt;Works in 3 modes:&lt;br&gt;RAG (personal files)&lt;br&gt;RAG (shared KB)&lt;br&gt;Normal Q&amp;amp;A (no RAG)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="290" width="190" x="457" y="97" as="geometry" />
+        </mxCell>
+        <mxCell id="right-panel" parent="1" style="swimlane;startSize=26;fillColor=#CFFAFE;strokeColor=#0891B2;strokeWidth=2;fontStyle=1;fontSize=10;fontColor=#164E63;rounded=1;arcSize=4;fontFamily=Helvetica;" value="RIGHT PANEL" vertex="1">
+          <mxGeometry height="290" width="810" x="664" y="97" as="geometry" />
+        </mxCell>
+        <mxCell id="tools-lbl" parent="right-panel" style="text;html=1;fontSize=9;fontStyle=1;fontColor=#0e7490;align=left;fontFamily=Helvetica;" value="TOOLS" vertex="1">
+          <mxGeometry height="18" width="200" x="10" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="summary-tool" parent="right-panel" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#A5F3FC;strokeColor=#0891B2;strokeWidth=1.5;fontSize=11;fontColor=#164E63;fontFamily=Helvetica;" value="&lt;b&gt;Summary Tool&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 9px; color: rgb(22, 78, 99);&quot;&gt;Upload doc - queue&lt;br&gt;AI summarization&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="180" x="10" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="translation-tool" parent="right-panel" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#A5F3FC;strokeColor=#0891B2;strokeWidth=1.5;fontSize=11;fontColor=#164E63;fontFamily=Helvetica;" value="&lt;b&gt;Translation Tool&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 9px; color: rgb(22, 78, 99);&quot;&gt;Upload doc - queue&lt;br&gt;Multi-language output&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="180" x="202" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="excel-tool" parent="right-panel" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#A5F3FC;strokeColor=#0891B2;strokeWidth=1.5;fontSize=11;fontColor=#164E63;fontFamily=Helvetica;" value="&lt;b&gt;Excel Analytics&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 9px; color: rgb(22, 78, 99);&quot;&gt;Upload .xlsx - queue&lt;br&gt;AI-powered analysis&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="180" x="394" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="other-tools" parent="right-panel" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#CFFAFE;strokeColor=#0891B2;strokeWidth=1.5;strokeDasharray=6 4;fontSize=11;fontColor=#164E63;fontFamily=Helvetica;" value="&lt;b&gt;Other Tools&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#164e63;&quot;&gt;Extensible service&lt;br&gt;Same upload pipeline&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="180" x="586" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="output-lbl" parent="right-panel" style="text;html=1;fontSize=9;fontStyle=1;fontColor=#0e7490;align=left;fontFamily=Helvetica;" value="OUTPUTS" vertex="1">
+          <mxGeometry height="18" width="200" x="10" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="output-area" parent="right-panel" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#67E8F9;strokeColor=#0891B2;strokeWidth=1.5;fontSize=11;fontColor=#164E63;fontFamily=Helvetica;" value="&lt;b&gt;Generated Outputs&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 9px; color: rgb(22, 78, 99);&quot;&gt;Translated Documents &amp;nbsp;|&amp;nbsp; Summaries &amp;nbsp;|&amp;nbsp; Analytics Q&amp;amp;A&amp;nbsp; |&amp;nbsp; Tool Results&lt;br&gt;Results stored in MinIO · Download links surfaced via WebSocket&lt;/font&gt;" vertex="1">
+          <mxGeometry height="97" width="786" x="10" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="ws-badge" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2;fontSize=11;fontColor=#78350F;fontFamily=Helvetica;" value="&lt;b&gt;WebSocket&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#92400e;&quot;&gt;1 persistent connection&lt;br&gt;per user (all features)&lt;br&gt;—&lt;br&gt;• LLM token stream&lt;br&gt;• Job progress&lt;br&gt;• Tool completion&lt;br&gt;• Error notifications&lt;/font&gt;" vertex="1">
+          <mxGeometry height="290" width="128" x="1487" y="97" as="geometry" />
+        </mxCell>
+        <mxCell id="gw-box" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#FBCFE8;strokeColor=#BE185D;strokeWidth=2;fontSize=12;fontColor=#831843;fontFamily=Helvetica;" value="&lt;b&gt;API Gateway&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#831843;&quot;&gt;Route · Rate-limit · Auth&lt;/font&gt;" vertex="1">
+          <mxGeometry height="78" width="215" x="80" y="435" as="geometry" />
+        </mxCell>
+        <mxCell id="gw-routes" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;" value="&lt;font style=&quot;font-family:Courier New;font-size:10px;color:#9d174d;&quot;&gt;&lt;b&gt;/auth&lt;/b&gt; &amp;nbsp;&amp;nbsp; → JWT validation &amp; session&lt;br&gt;&lt;b&gt;/chat&lt;/b&gt; &amp;nbsp;&amp;nbsp; → Chat orchestrator (streaming)&lt;br&gt;&lt;b&gt;/upload&lt;/b&gt; → ALL file uploads (RAG + all tools)&lt;br&gt;&lt;b&gt;/tools&lt;/b&gt; &amp;nbsp;&amp;nbsp; → Tool invocations (light/heavy routing)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="680" x="315" y="426" as="geometry" />
+        </mxCell>
+        <mxCell id="be-auth" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#EDE9FE;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=11;fontColor=#3B0764;fontFamily=Helvetica;" value="&lt;b&gt;Auth Module&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#4c1d95;&quot;&gt;JWT validation&lt;br&gt;Role-based access&lt;br&gt;Tenant isolation&lt;br&gt;Session management&lt;/font&gt;" vertex="1">
+          <mxGeometry height="188" width="232" x="80" y="562" as="geometry" />
+        </mxCell>
+        <mxCell id="be-chat" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#EDE9FE;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=11;fontColor=#3B0764;fontFamily=Helvetica;" value="&lt;b&gt;Chat Orchestrator&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#4c1d95;&quot;&gt;Conversation memory&lt;br&gt;KB scope resolution&lt;br&gt;RAG / Q&amp;A decision&lt;br&gt;LLM streaming mgmt&lt;/font&gt;" vertex="1">
+          <mxGeometry height="188" width="232" x="322" y="562" as="geometry" />
+        </mxCell>
+        <mxCell id="be-retrieval" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#EDE9FE;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=11;fontColor=#3B0764;fontFamily=Helvetica;" value="&lt;b&gt;Hybrid Retrieval&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#4c1d95;&quot;&gt;Embed query via vLLM&lt;br&gt;Milvus dense search&lt;br&gt;Elasticsearch sparse&lt;br&gt;RRF fusion scoring&lt;/font&gt;" vertex="1">
+          <mxGeometry height="188" width="232" x="564" y="562" as="geometry" />
+        </mxCell>
+        <mxCell id="be-upload" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#EDE9FE;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=11;fontColor=#3B0764;fontFamily=Helvetica;" value="&lt;b&gt;Upload Manager&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#4c1d95;&quot;&gt;File type validation&lt;br&gt;Store to MinIO&lt;br&gt;Job record in PostgreSQL&lt;br&gt;Publish to RabbitMQ&lt;/font&gt;" vertex="1">
+          <mxGeometry height="188" width="232" x="806" y="562" as="geometry" />
+        </mxCell>
+        <mxCell id="be-toolrouter" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#EDE9FE;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=11;fontColor=#3B0764;fontFamily=Helvetica;" value="&lt;b&gt;Tool Router&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#4c1d95;&quot;&gt;Classify: light vs heavy&lt;br&gt;Light → vLLM direct&lt;br&gt;Heavy → RabbitMQ queue&lt;br&gt;Format responses&lt;/font&gt;" vertex="1">
+          <mxGeometry height="188" width="232" x="1048" y="562" as="geometry" />
+        </mxCell>
+        <mxCell id="be-wsmanager" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#EDE9FE;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=11;fontColor=#3B0764;fontFamily=Helvetica;" value="&lt;b&gt;WebSocket Manager&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#4c1d95;&quot;&gt;User connection registry&lt;br&gt;Redis pub/sub listener&lt;br&gt;Stream tokens to UI&lt;br&gt;Push job status&lt;/font&gt;" vertex="1">
+          <mxGeometry height="188" width="232" x="1290" y="562" as="geometry" />
+        </mxCell>
+        <mxCell id="async-note" parent="1" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2;fontSize=10;fontStyle=1;fontColor=#92400E;fontFamily=Helvetica;" value="&amp;nbsp;ALL user file uploads — regardless of intent (RAG ingestion · Translation · Excel Analytics · Summary · any tool) — follow this SAME pipeline" vertex="1">
+          <mxGeometry height="38" width="1535" x="80" y="797" as="geometry" />
+        </mxCell>
+        <mxCell id="rabbitmq" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#FDE68A;strokeColor=#D97706;strokeWidth=2;fontSize=11;fontColor=#451a03;fontFamily=Helvetica;" value="&lt;b&gt;RabbitMQ&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#78350f;&quot;&gt;Message Broker&lt;br&gt;ingestion_queue&lt;br&gt;tools_queue&lt;br&gt;dead_letter_queue&lt;br&gt;AMQP protocol&lt;/font&gt;" vertex="1">
+          <mxGeometry height="215" width="165" x="80" y="901.5" as="geometry" />
+        </mxCell>
+        <mxCell id="celery" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#FDE68A;strokeColor=#D97706;strokeWidth=2;fontSize=11;fontColor=#451a03;fontFamily=Helvetica;" value="&lt;b&gt;Celery Workers&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#78350f;&quot;&gt;Consume jobs&lt;br&gt;Scalable instances&lt;br&gt;Retry logic&lt;br&gt;Dead-letter handling&lt;/font&gt;" vertex="1">
+          <mxGeometry height="215" width="150" x="260" y="901.5" as="geometry" />
+        </mxCell>
+        <mxCell id="docling" parent="1" style="swimlane;startSize=26;fillColor=#FEF9C3;strokeColor=#CA8A04;strokeWidth=2;fontStyle=1;fontSize=10;fontColor=#713F12;rounded=1;arcSize=4;fontFamily=Helvetica;" value="Docling Service" vertex="1">
+          <mxGeometry height="229" width="496" x="430" y="838" as="geometry">
+            <mxRectangle height="30" width="110" x="430" y="838" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="docling-chunker" parent="docling" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#FEF08A;strokeColor=#CA8A04;strokeWidth=1.5;fontSize=11;fontColor=#713F12;fontFamily=Helvetica;" value="&lt;b&gt;Chunker&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#713f12;&quot;&gt;Semantic splitting&lt;br&gt;Configurable overlap&lt;br&gt;Preserve context&lt;br&gt;Metadata tagging&lt;/font&gt;" vertex="1">
+          <mxGeometry height="178" width="150" x="234" y="51" as="geometry" />
+        </mxCell>
+        <mxCell id="redis" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#FDBA74;strokeColor=#EA580C;strokeWidth=2;fontSize=11;fontColor=#431407;fontFamily=Helvetica;" value="&lt;b&gt;Redis&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#78350f;&quot;&gt;Pub/Sub bus&lt;br&gt;Session cache&lt;br&gt;Job status events&lt;br&gt;Rate limiting&lt;/font&gt;" vertex="1">
+          <mxGeometry height="215" width="165" x="1200" y="901.5" as="geometry" />
+        </mxCell>
+        <mxCell id="dl-milvus" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#BBF7D0;strokeColor=#15803D;strokeWidth=2;fontSize=11;fontColor=#14532D;fontFamily=Helvetica;" value="&lt;b&gt;Milvus&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#14532d;&quot;&gt;Vector Database&lt;br&gt;Dense search&lt;br&gt;Partition: user_{id}&lt;br&gt;Partition: shared_kb&lt;/font&gt;" vertex="1">
+          <mxGeometry height="168" width="200" x="80" y="1310" as="geometry" />
+        </mxCell>
+        <mxCell id="dl-es" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#BBF7D0;strokeColor=#15803D;strokeWidth=2;fontSize=11;fontColor=#14532D;fontFamily=Helvetica;" value="&lt;b&gt;Elasticsearch&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#14532d;&quot;&gt;Keyword Search&lt;br&gt;BM25 / sparse&lt;br&gt;Filtered by user_id&lt;br&gt;Full-text index&lt;/font&gt;" vertex="1">
+          <mxGeometry height="168" width="200" x="300" y="1316" as="geometry" />
+        </mxCell>
+        <mxCell id="dl-minio" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#BBF7D0;strokeColor=#15803D;strokeWidth=2;fontSize=11;fontColor=#14532D;fontFamily=Helvetica;" value="&lt;b&gt;MinIO&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#14532d;&quot;&gt;Object Storage (S3)&lt;br&gt;Raw uploaded files&lt;br&gt;Tool outputs&lt;br&gt;users/{id}/files/&lt;/font&gt;" vertex="1">
+          <mxGeometry height="168" width="200" x="540" y="1310" as="geometry" />
+        </mxCell>
+        <mxCell id="dl-postgres" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#BBF7D0;strokeColor=#15803D;strokeWidth=2;fontSize=11;fontColor=#14532D;fontFamily=Helvetica;" value="&lt;b&gt;PostgreSQL&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#14532d;&quot;&gt;Application DB&lt;br&gt;Users · Sessions · Jobs&lt;br&gt;Conversation history&lt;br&gt;File + chunk metadata&lt;/font&gt;" vertex="1">
+          <mxGeometry height="168" width="200" x="760" y="1310" as="geometry" />
+        </mxCell>
+        <mxCell id="vllm-container" parent="1" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#ECFEFF;strokeColor=#0891B2;strokeWidth=3;opacity=70;" value="" vertex="1">
+          <mxGeometry height="490" width="720" x="1640" y="82" as="geometry" />
+        </mxCell>
+        <mxCell id="vllm-header" parent="1" style="text;html=1;fontSize=15;fontStyle=1;fontColor=#164E63;align=center;verticalAlign=middle;fontFamily=Helvetica;" value="vLLM — Model Serving Microservice" vertex="1">
+          <mxGeometry height="30" width="720" x="1640" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="vllm-desc" parent="1" style="text;html=1;fontSize=9;fontStyle=2;fontColor=#0e7490;align=center;verticalAlign=middle;fontFamily=Helvetica;" value="Independently deployed GPU service · OpenAI-compatible REST API · Hosts multiple model types" vertex="1">
+          <mxGeometry height="20" width="720" x="1640" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="vllm-chat-model" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#A5F3FC;strokeColor=#0891B2;strokeWidth=2;fontSize=11;fontColor=#164E63;fontFamily=Helvetica;" value="&lt;b&gt;Chat / Completion Model&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#164e63;&quot;&gt;Text generation (streaming)&lt;br&gt;Instruction following&lt;br&gt;RAG response synthesis&lt;br&gt;Tool output generation&lt;br&gt;—&lt;br&gt;POST /v1/chat/completions&lt;/font&gt;" vertex="1">
+          <mxGeometry height="200" width="325" x="1655" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="vllm-embed-model" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#A5F3FC;strokeColor=#0891B2;strokeWidth=2;fontSize=11;fontColor=#164E63;fontFamily=Helvetica;" value="&lt;b&gt;Embedding Model&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#164e63;&quot;&gt;Dense vector generation&lt;br&gt;Query embedding (retrieval)&lt;br&gt;Chunk embedding (indexing)&lt;br&gt;Batch processing support&lt;br&gt;—&lt;br&gt;POST /v1/embeddings&lt;/font&gt;" vertex="1">
+          <mxGeometry height="200" width="325" x="2000" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="vllm-api-box" parent="1" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#CFFAFE;strokeColor=#22D3EE;strokeWidth=1.5;fontSize=10;fontFamily=Helvetica;" value="&lt;font style=&quot;font-family:Courier New;font-size:10px;color:#0e7490;&quot;&gt;POST /v1/chat/completions &amp;nbsp;·&amp;nbsp; POST /v1/embeddings &amp;nbsp;·&amp;nbsp; Streaming SSE support &amp;nbsp;·&amp;nbsp; Batch inference&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="668" x="1655" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="vllm-deploy-note" parent="1" style="text;html=1;fontSize=9;fontStyle=2;fontColor=#0e7490;align=center;verticalAlign=middle;fontFamily=Helvetica;" value="Deployment: GPU server (dedicated) or GPU-enabled Docker container · Independent scaling · Model hot-swap" vertex="1">
+          <mxGeometry height="20" width="668" x="1655" y="415" as="geometry" />
+        </mxCell>
+        <mxCell id="vllm-callers-note" parent="1" style="text;html=1;fontSize=9;fontStyle=1;fontColor=#0c4a6e;align=center;verticalAlign=middle;fontFamily=Helvetica;" value="Called by: Flask Backend (chat + embed query) &amp;nbsp;·&amp;nbsp; Docling Embedder (chunk embedding) &amp;nbsp;·&amp;nbsp; Tool Router (light tools)" vertex="1">
+          <mxGeometry height="24" width="668" x="1655" y="438" as="geometry" />
+        </mxCell>
+        <mxCell id="flows-title" parent="1" style="text;html=1;fontSize=14;fontStyle=1;fontColor=#1e3a5f;align=left;fontFamily=Helvetica;" value="Runtime Flows" vertex="1">
+          <mxGeometry height="28" width="200" x="1640" y="585" as="geometry" />
+        </mxCell>
+        <mxCell id="flow1" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#EDE9FE;strokeColor=#7C3AED;strokeWidth=2;fontSize=11;fontColor=#3B0764;align=left;spacingLeft=8;spacingTop=6;fontFamily=Helvetica;" value="&lt;b&gt;① User Login&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-family:Courier New;font-size:9px;&quot;&gt;UI → API Gateway → Auth Module&lt;br&gt;→ PostgreSQL (validate credentials)&lt;br&gt;→ JWT issued → returned to UI&lt;br&gt;→ Persistent WebSocket established&lt;/font&gt;" vertex="1">
+          <mxGeometry height="110" width="350" x="1640" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="flow2" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2;fontSize=11;fontColor=#451A03;align=left;spacingLeft=8;spacingTop=6;fontFamily=Helvetica;" value="&lt;b&gt;② File Upload — ALL tools + RAG&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-family:Courier New;font-size:9px;&quot;&gt;UI → POST /upload (file + intent: rag|translate...)&lt;br&gt;→ Upload Manager → MinIO (raw file)&lt;br&gt;→ PostgreSQL (job: PENDING)&lt;br&gt;→ RabbitMQ → Celery Worker&lt;br&gt;→ Docling: Parse → Chunk → Embed (vLLM)&lt;br&gt;→ Milvus + Elasticsearch + PostgreSQL&lt;br&gt;→ Redis (DONE) → WebSocket → UI&lt;/font&gt;" vertex="1">
+          <mxGeometry height="175" width="350" x="1640" y="740" as="geometry" />
+        </mxCell>
+        <mxCell id="flow3" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#15803D;strokeWidth=2;fontSize=11;fontColor=#14532D;align=left;spacingLeft=8;spacingTop=6;fontFamily=Helvetica;" value="&lt;b&gt;③ Normal Q&amp;A (no RAG)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-family:Courier New;font-size:9px;&quot;&gt;UI → Chat (no KB selection)&lt;br&gt;→ Chat Orchestrator (direct mode)&lt;br&gt;→ vLLM /v1/chat/completions&lt;br&gt;→ WebSocket streams tokens → UI&lt;br&gt;→ PostgreSQL (save turn)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="130" width="350" x="1640" y="925" as="geometry" />
+        </mxCell>
+        <mxCell id="flow4" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#2563EB;strokeWidth=2;fontSize=11;fontColor=#1E3A5F;align=left;spacingLeft=8;spacingTop=6;fontFamily=Helvetica;" value="&lt;b&gt;④ Chat with Hybrid RAG&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-family:Courier New;font-size:9px;&quot;&gt;UI → chat + KB scope selection&lt;br&gt;→ Chat Orchestrator (load history)&lt;br&gt;→ vLLM /v1/embeddings (embed query)&lt;br&gt;→ Milvus dense + Elasticsearch sparse&lt;br&gt;→ RRF fusion → build augmented prompt&lt;br&gt;→ vLLM /v1/chat (streaming)&lt;br&gt;→ WebSocket tokens → UI&lt;/font&gt;" vertex="1">
+          <mxGeometry height="175" width="350" x="2005" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="flow5" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#CFFAFE;strokeColor=#0891B2;strokeWidth=2;fontSize=11;fontColor=#164E63;align=left;spacingLeft=8;spacingTop=6;fontFamily=Helvetica;" value="&lt;b&gt;⑤ Heavy Tool (Translation / Analytics)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-family:Courier New;font-size:9px;&quot;&gt;→ Same pipeline as Flow ②&lt;br&gt;→ Worker executes tool logic on parsed doc&lt;br&gt;→ Result stored in MinIO (output bucket)&lt;br&gt;→ Redis (DONE + download URL)&lt;br&gt;→ WebSocket → UI Outputs panel&lt;/font&gt;" vertex="1">
+          <mxGeometry height="145" width="350" x="2005" y="805" as="geometry" />
+        </mxCell>
+        <mxCell id="flow6" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#FCE7F3;strokeColor=#BE185D;strokeWidth=2;fontSize=11;fontColor=#831843;align=left;spacingLeft=8;spacingTop=6;fontFamily=Helvetica;" value="&lt;b&gt;⑥ Light Tool + Tenant Isolation&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-family:Courier New;font-size:9px;&quot;&gt;Light: Flask → vLLM direct → WebSocket&lt;br&gt;—&lt;br&gt;Tenant isolation rules:&lt;br&gt;Personal RAG → Milvus: user_{id}&lt;br&gt;Shared KB &amp;nbsp;&amp;nbsp;&amp;nbsp;→ Milvus: shared_kb&lt;br&gt;ES: filtered by user_id field&lt;br&gt;MinIO: prefix users/{id}/files/&lt;/font&gt;" vertex="1">
+          <mxGeometry height="175" width="350" x="2005" y="960" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-leftpanel-gw" edge="1" parent="1" source="left-panel" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.15;entryY=0;entryDx=0;entryDy=0;strokeColor=#BE185D;strokeWidth=2;fontSize=9;fontColor=#9D174D;fontFamily=Helvetica;" target="gw-box" value="auth / KB selection">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-chat-gw" edge="1" parent="1" source="chat-center" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.4;entryY=0;entryDx=0;entryDy=0;strokeColor=#BE185D;strokeWidth=2;fontSize=9;fontColor=#9D174D;fontFamily=Helvetica;" target="gw-box" value="chat message + KB scope">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-tools-gw" edge="1" parent="1" source="right-panel" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.1;exitY=1;exitDx=0;exitDy=0;entryX=0.7;entryY=0;entryDx=0;entryDy=0;strokeColor=#BE185D;strokeWidth=2;fontSize=9;fontColor=#9D174D;fontFamily=Helvetica;" target="gw-box" value="file uploads / tool requests">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-gw-auth" edge="1" parent="1" source="gw-box" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.2;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#7C3AED;strokeWidth=2;fontSize=9;fontColor=#5B21B6;fontFamily=Helvetica;" target="be-auth" value="auth requests">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-gw-chat" edge="1" parent="1" source="gw-box" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.4;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#7C3AED;strokeWidth=2;fontSize=9;fontColor=#5B21B6;fontFamily=Helvetica;" target="be-chat" value="chat requests">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-gw-upload" edge="1" parent="1" source="gw-box" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.6;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#7C3AED;strokeWidth=2;fontSize=9;fontColor=#5B21B6;fontFamily=Helvetica;" target="be-upload" value="upload requests">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-gw-tool" edge="1" parent="1" source="gw-box" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.8;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#7C3AED;strokeWidth=2;fontSize=9;fontColor=#5B21B6;fontFamily=Helvetica;" target="be-toolrouter" value="tool requests">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="252" y="550" />
+              <mxPoint x="1164" y="550" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-chat-retrieval" edge="1" parent="1" source="be-chat" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=9;fontColor=#5B21B6;fontFamily=Helvetica;" target="be-retrieval" value="query retrieval">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-chat-vllm" edge="1" parent="1" source="be-chat" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.4;entryDx=0;entryDy=0;strokeColor=#0891B2;strokeWidth=2;fontSize=9;fontColor=#164E63;fontFamily=Helvetica;" target="vllm-chat-model" value="embed query + chat/completions (stream)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="554" y="770" />
+              <mxPoint x="1610" y="770" />
+              <mxPoint x="1610" y="230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-tool-vllm" edge="1" parent="1" source="be-toolrouter" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.6;entryDx=0;entryDy=0;strokeColor=#0891B2;strokeWidth=2;fontSize=9;fontColor=#164E63;dashed=1;fontFamily=Helvetica;" target="vllm-chat-model" value="light tool direct">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1620" y="656" />
+              <mxPoint x="1620" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-auth-postgres" edge="1" parent="1" source="be-auth" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.2;entryY=0;entryDx=0;entryDy=0;strokeColor=#15803D;strokeWidth=1.5;fontSize=9;fontColor=#14532D;fontFamily=Helvetica;" target="dl-postgres" value="validate user">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="196" y="860" />
+              <mxPoint x="830" y="860" />
+              <mxPoint x="830" y="1310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-retrieval-milvus" edge="1" parent="1" source="be-retrieval" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#15803D;strokeWidth=1.5;fontSize=9;fontColor=#14532D;fontFamily=Helvetica;fontStyle=1" target="dl-milvus" value="vector search">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="634" y="1210" />
+              <mxPoint x="180" y="1210" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-retrieval-es" edge="1" parent="1" source="be-retrieval" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#15803D;strokeWidth=1.5;fontSize=9;fontColor=#14532D;fontFamily=Helvetica;" target="dl-es" value="keyword search">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="640" y="750" />
+              <mxPoint x="640" y="1170" />
+              <mxPoint x="400" y="1170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-chat-postgres" edge="1" parent="1" source="be-chat" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.4;entryY=0;entryDx=0;entryDy=0;strokeColor=#15803D;strokeWidth=1.5;fontSize=9;fontColor=#14532D;fontFamily=Helvetica;" target="dl-postgres" value="save conversation">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="438" y="1100" />
+              <mxPoint x="840" y="1100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-upload-minio" edge="1" parent="1" source="be-upload" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#15803D;strokeWidth=1.5;fontSize=9;fontColor=#14532D;fontFamily=Helvetica;fontStyle=1" target="dl-minio" value="store raw file">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="876" y="1240" />
+              <mxPoint x="620" y="1240" />
+              <mxPoint x="620" y="1316" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-upload-postgres" edge="1" parent="1" source="be-upload" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.7;exitY=1;exitDx=0;exitDy=0;entryX=0.6;entryY=0;entryDx=0;entryDy=0;strokeColor=#15803D;strokeWidth=1.5;fontSize=9;fontColor=#14532D;fontFamily=Helvetica;" target="dl-postgres" value="job record">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="968" y="1030" />
+              <mxPoint x="900" y="1030" />
+              <mxPoint x="900" y="1310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-upload-mq" edge="1" parent="1" source="be-upload" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#D97706;strokeWidth=2;fontSize=9;fontColor=#92400E;fontFamily=Helvetica;" target="rabbitmq" value="enqueue job&#xa;(type + file ref)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="922" y="790" />
+              <mxPoint x="163" y="790" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-toolrouter-mq" edge="1" parent="1" source="be-toolrouter" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.7;entryY=0;entryDx=0;entryDy=0;strokeColor=#D97706;strokeWidth=2;fontSize=9;fontColor=#92400E;fontFamily=Helvetica;" target="rabbitmq" value="heavy tool">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1164" y="770" />
+              <mxPoint x="196" y="770" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-mq-celery" edge="1" parent="1" source="rabbitmq" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#D97706;strokeWidth=2;fontSize=9;fontColor=#92400E;fontFamily=Helvetica;" target="celery" value="dispatch job">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-celery-docling" edge="1" parent="1" source="celery" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#D97706;strokeWidth=2;fontSize=9;fontColor=#92400E;fontFamily=Helvetica;" target="docling" value="parse + chunk + embed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-celery-redis" edge="1" parent="1" source="celery" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#EA580C;strokeWidth=2;fontSize=9;fontColor=#92400E;fontFamily=Helvetica;" target="redis" value="publish DONE / progress">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="410" y="1030" />
+              <mxPoint x="1200" y="1030" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-embed-vllm" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.6;entryDx=0;entryDy=0;strokeColor=#0891B2;strokeWidth=2;fontSize=9;fontColor=#164E63;dashed=1;fontFamily=Helvetica;" value="POST /v1/embeddings">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="918" y="960" />
+              <mxPoint x="1562" y="960" />
+              <mxPoint x="1562" y="360" />
+              <mxPoint x="2002" y="360" />
+            </Array>
+            <mxPoint x="918" y="961" as="sourcePoint" />
+            <mxPoint x="2002" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-docling-milvus" edge="1" parent="1" source="docling" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#15803D;strokeWidth=1.5;fontSize=9;fontColor=#14532D;fontFamily=Helvetica;fontStyle=1" target="dl-milvus" value="store vectors">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="579" y="1240" />
+              <mxPoint x="180" y="1240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-celery-es" edge="1" parent="1" source="celery" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#15803D;strokeWidth=1.5;fontSize=9;fontColor=#14532D;fontFamily=Helvetica;fontStyle=1" target="dl-es" value="index keywords">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-celery-postgres" edge="1" parent="1" source="celery" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.3;entryY=0;entryDx=0;entryDy=0;strokeColor=#15803D;strokeWidth=1.5;fontSize=9;fontColor=#14532D;fontFamily=Helvetica;fontStyle=1" target="dl-postgres" value="update job status">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="310" y="1270" />
+              <mxPoint x="820" y="1270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-celery-minio" edge="1" parent="1" source="celery" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.7;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#15803D;strokeWidth=1.5;fontSize=9;fontColor=#14532D;fontFamily=Helvetica;fontStyle=1" target="dl-minio" value="store outputs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="1290" />
+              <mxPoint x="640" y="1290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-redis-wsmanager" edge="1" parent="1" source="redis" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.4;exitDx=0;exitDy=0;entryX=1;entryY=0.6;entryDx=0;entryDy=0;strokeColor=#0891B2;strokeWidth=3;fontSize=9;fontColor=#0e7490;fontFamily=Helvetica;" target="be-wsmanager" value="pub/sub event">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-wsmanager-ui" edge="1" parent="1" source="be-wsmanager" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeColor=#0891B2;strokeWidth=3;fontSize=9;fontColor=#0e7490;fontFamily=Helvetica;" target="ws-badge" value="push update / stream token">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-ws-output" edge="1" parent="1" source="ws-badge" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.8;entryDx=0;entryDy=0;strokeColor=#0891B2;strokeWidth=2;fontSize=9;fontColor=#0e7490;dashed=1;fontFamily=Helvetica;" target="right-panel" value="result ready → Output panel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="docling-parser" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#FEF08A;strokeColor=#CA8A04;strokeWidth=1.5;fontSize=11;fontColor=#713F12;fontFamily=Helvetica;" value="&lt;b&gt;Parser&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#713f12;&quot;&gt;PDF · DOCX · XLSX&lt;br&gt;HTML · TXT&lt;br&gt;via Docling library&lt;br&gt;Structure extraction&lt;/font&gt;" vertex="1">
+          <mxGeometry height="178" width="150" x="453" y="940" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-dp-dc" edge="1" parent="1" source="docling-parser" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#CA8A04;strokeWidth=2;" target="docling-chunker" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="docling-embedder" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#FEF08A;strokeColor=#CA8A04;strokeWidth=1.5;fontSize=11;fontColor=#713F12;fontFamily=Helvetica;" value="&lt;b&gt;Embedder&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#713f12;&quot;&gt;Calls vLLM&lt;br&gt;POST /v1/embeddings&lt;br&gt;Dense vector per chunk&lt;br&gt;Batch processing&lt;/font&gt;" vertex="1">
+          <mxGeometry height="178" width="150" x="860" y="901" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-dc-de" edge="1" parent="1" source="docling-chunker" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#CA8A04;strokeWidth=2;" target="docling-embedder" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
