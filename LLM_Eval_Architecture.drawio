@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="1">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- TITLE -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <mxCell id="title" value="LLM Evaluation Platform — User Journey &amp; Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1;fontColor=#1B3A5C;" vertex="1" parent="1">
+      <mxGeometry x="300" y="20" width="1060" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="subtitle" value="How a user interacts with the system — end to end" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=2;fontColor=#2E75B6;" vertex="1" parent="1">
+      <mxGeometry x="300" y="55" width="1060" height="25" as="geometry" />
+    </mxCell>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- SWIM LANE BACKGROUNDS -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <!-- Lane 1: USER -->
+    <mxCell id="lane1bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EBF4FB;strokeColor=#2E75B6;strokeWidth=2;opacity=40;" vertex="1" parent="1">
+      <mxGeometry x="30" y="100" width="1600" height="130" as="geometry" />
+    </mxCell>
+    <mxCell id="lane1label" value="👤  USER" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#1B3A5C;" vertex="1" parent="1">
+      <mxGeometry x="40" y="105" width="120" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- Lane 2: PLATFORM FRONTEND -->
+    <mxCell id="lane2bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E2EFDA;strokeColor=#1D6F42;strokeWidth=2;opacity=40;" vertex="1" parent="1">
+      <mxGeometry x="30" y="245" width="1600" height="130" as="geometry" />
+    </mxCell>
+    <mxCell id="lane2label" value="🖥  PLATFORM  (Frontend)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#1D6F42;" vertex="1" parent="1">
+      <mxGeometry x="40" y="250" width="200" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- Lane 3: EVALUATION ENGINE -->
+    <mxCell id="lane3bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4D6;strokeColor=#C55A11;strokeWidth=2;opacity=40;" vertex="1" parent="1">
+      <mxGeometry x="30" y="390" width="1600" height="130" as="geometry" />
+    </mxCell>
+    <mxCell id="lane3label" value="⚙️  EVALUATION ENGINE  (Backend)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#C55A11;" vertex="1" parent="1">
+      <mxGeometry x="40" y="395" width="250" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- Lane 4: AI MODELS & JUDGE -->
+    <mxCell id="lane4bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE7F6;strokeColor=#5B2C8D;strokeWidth=2;opacity=40;" vertex="1" parent="1">
+      <mxGeometry x="30" y="535" width="1600" height="130" as="geometry" />
+    </mxCell>
+    <mxCell id="lane4label" value="🤖  AI MODELS &amp; JUDGE" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#5B2C8D;" vertex="1" parent="1">
+      <mxGeometry x="40" y="540" width="220" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- Lane 5: STORAGE -->
+    <mxCell id="lane5bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#B8860B;strokeWidth=2;opacity=40;" vertex="1" parent="1">
+      <mxGeometry x="30" y="680" width="1600" height="130" as="geometry" />
+    </mxCell>
+    <mxCell id="lane5label" value="🗄  STORAGE &amp; REGISTRY" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#B8860B;" vertex="1" parent="1">
+      <mxGeometry x="40" y="685" width="220" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- STEP NUMBERS (top ribbon) -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <mxCell id="s1" value="STEP 1" style="text;html=1;strokeColor=none;fillColor=#1B3A5C;align=center;verticalAlign=middle;fontSize=10;fontStyle=1;fontColor=#FFFFFF;rounded=1;" vertex="1" parent="1">
+      <mxGeometry x="185" y="90" width="80" height="22" as="geometry" />
+    </mxCell>
+    <mxCell id="s2" value="STEP 2" style="text;html=1;strokeColor=none;fillColor=#1B3A5C;align=center;verticalAlign=middle;fontSize=10;fontStyle=1;fontColor=#FFFFFF;rounded=1;" vertex="1" parent="1">
+      <mxGeometry x="445" y="90" width="80" height="22" as="geometry" />
+    </mxCell>
+    <mxCell id="s3" value="STEP 3" style="text;html=1;strokeColor=none;fillColor=#1B3A5C;align=center;verticalAlign=middle;fontSize=10;fontStyle=1;fontColor=#FFFFFF;rounded=1;" vertex="1" parent="1">
+      <mxGeometry x="705" y="90" width="80" height="22" as="geometry" />
+    </mxCell>
+    <mxCell id="s4" value="STEP 4" style="text;html=1;strokeColor=none;fillColor=#1B3A5C;align=center;verticalAlign=middle;fontSize=10;fontStyle=1;fontColor=#FFFFFF;rounded=1;" vertex="1" parent="1">
+      <mxGeometry x="965" y="90" width="80" height="22" as="geometry" />
+    </mxCell>
+    <mxCell id="s5" value="STEP 5" style="text;html=1;strokeColor=none;fillColor=#1B3A5C;align=center;verticalAlign=middle;fontSize=10;fontStyle=1;fontColor=#FFFFFF;rounded=1;" vertex="1" parent="1">
+      <mxGeometry x="1225" y="90" width="80" height="22" as="geometry" />
+    </mxCell>
+    <mxCell id="s6" value="STEP 6" style="text;html=1;strokeColor=none;fillColor=#1B3A5C;align=center;verticalAlign=middle;fontSize=10;fontStyle=1;fontColor=#FFFFFF;rounded=1;" vertex="1" parent="1">
+      <mxGeometry x="1480" y="90" width="80" height="22" as="geometry" />
+    </mxCell>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- USER LANE — ACTIONS -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <!-- Step 1: Register models -->
+    <mxCell id="u1" value="&lt;b&gt;Register AI Models&lt;/b&gt;&lt;br&gt;Paste API key + endpoint URL&lt;br&gt;(GPT-4o, Claude, Llama, etc.)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2E75B6;strokeColor=#1B3A5C;fontColor=#FFFFFF;fontSize=12;align=center;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="155" y="120" width="170" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Step 2: Pick dataset + metrics -->
+    <mxCell id="u2" value="&lt;b&gt;Pick Dataset &amp; Metrics&lt;/b&gt;&lt;br&gt;Choose built-in or upload&lt;br&gt;your own CSV / JSON" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2E75B6;strokeColor=#1B3A5C;fontColor=#FFFFFF;fontSize=12;align=center;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="415" y="120" width="170" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Step 3: Launch eval -->
+    <mxCell id="u3" value="&lt;b&gt;Launch Evaluation&lt;/b&gt;&lt;br&gt;Select models to compare&lt;br&gt;Click 'Run'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2E75B6;strokeColor=#1B3A5C;fontColor=#FFFFFF;fontSize=12;align=center;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="675" y="120" width="170" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Step 4: Wait / monitor -->
+    <mxCell id="u4" value="&lt;b&gt;Monitor Progress&lt;/b&gt;&lt;br&gt;Live progress bar while&lt;br&gt;tests run in background" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2E75B6;strokeColor=#1B3A5C;fontColor=#FFFFFF;fontSize=12;align=center;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="935" y="120" width="170" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Step 5: View results -->
+    <mxCell id="u5" value="&lt;b&gt;View Results&lt;/b&gt;&lt;br&gt;Side-by-side scores,&lt;br&gt;radar chart, drill-down" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2E75B6;strokeColor=#1B3A5C;fontColor=#FFFFFF;fontSize=12;align=center;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1195" y="120" width="170" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Step 6: Export / act -->
+    <mxCell id="u6" value="&lt;b&gt;Export &amp; Act&lt;/b&gt;&lt;br&gt;Download PDF / CSV&lt;br&gt;or trigger DSPy / Fine-tune" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2E75B6;strokeColor=#1B3A5C;fontColor=#FFFFFF;fontSize=12;align=center;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1450" y="120" width="170" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- User arrows -->
+    <mxCell id="ua1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#1B3A5C;strokeWidth=2;endArrow=open;endFill=0;" edge="1" source="u1" target="u2" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ua2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#1B3A5C;strokeWidth=2;endArrow=open;endFill=0;" edge="1" source="u2" target="u3" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ua3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#1B3A5C;strokeWidth=2;endArrow=open;endFill=0;" edge="1" source="u3" target="u4" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ua4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#1B3A5C;strokeWidth=2;endArrow=open;endFill=0;" edge="1" source="u4" target="u5" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ua5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#1B3A5C;strokeWidth=2;endArrow=open;endFill=0;" edge="1" source="u5" target="u6" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- FRONTEND LANE -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <mxCell id="f1" value="&lt;b&gt;Model Config UI&lt;/b&gt;&lt;br&gt;Validates API key,&lt;br&gt;stores model settings" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1D6F42;strokeColor=#145232;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="155" y="265" width="160" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="f2" value="&lt;b&gt;Dataset Picker&lt;/b&gt;&lt;br&gt;Browse registry or&lt;br&gt;upload custom file" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1D6F42;strokeColor=#145232;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="415" y="265" width="160" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="f3" value="&lt;b&gt;Eval Launcher&lt;/b&gt;&lt;br&gt;Validates inputs, dispatches&lt;br&gt;job to engine queue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1D6F42;strokeColor=#145232;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="675" y="265" width="160" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="f4" value="&lt;b&gt;Progress Tracker&lt;/b&gt;&lt;br&gt;Polls job status,&lt;br&gt;shows live progress" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1D6F42;strokeColor=#145232;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="935" y="265" width="160" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="f5" value="&lt;b&gt;Dashboard&lt;/b&gt;&lt;br&gt;Radar chart · Leaderboard&lt;br&gt;Per-question drill-down" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1D6F42;strokeColor=#145232;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1195" y="265" width="160" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="f6" value="&lt;b&gt;Export &amp; Actions&lt;/b&gt;&lt;br&gt;PDF · CSV · JSON&lt;br&gt;DSPy / Unsloth buttons" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1D6F42;strokeColor=#145232;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1450" y="265" width="160" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- user → frontend vertical arrows -->
+    <mxCell id="vf1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2E75B6;strokeWidth=1.5;endArrow=block;endFill=1;dashed=1;" edge="1" source="u1" target="f1" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="vf2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2E75B6;strokeWidth=1.5;endArrow=block;endFill=1;dashed=1;" edge="1" source="u2" target="f2" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="vf3" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2E75B6;strokeWidth=1.5;endArrow=block;endFill=1;dashed=1;" edge="1" source="u3" target="f3" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="vf4" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2E75B6;strokeWidth=1.5;endArrow=block;endFill=1;dashed=1;" edge="1" source="u4" target="f4" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="vf5" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2E75B6;strokeWidth=1.5;endArrow=block;endFill=1;dashed=1;" edge="1" source="u5" target="f5" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="vf6" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2E75B6;strokeWidth=1.5;endArrow=block;endFill=1;dashed=1;" edge="1" source="u6" target="f6" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- ENGINE LANE -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <mxCell id="e1" value="&lt;b&gt;LLM Connector&lt;/b&gt;&lt;br&gt;LiteLLM adapter&lt;br&gt;(any /v1 API)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C55A11;strokeColor=#8B3A08;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="530" y="410" width="145" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="e2" value="&lt;b&gt;Test Case Manager&lt;/b&gt;&lt;br&gt;Loads questions from&lt;br&gt;dataset · Validates schema" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C55A11;strokeColor=#8B3A08;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="700" y="410" width="155" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="e3" value="&lt;b&gt;Eval Orchestrator&lt;/b&gt;&lt;br&gt;Celery workers · parallel&lt;br&gt;runs across models" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C55A11;strokeColor=#8B3A08;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="880" y="410" width="155" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="e4" value="&lt;b&gt;Metric Scorers&lt;/b&gt;&lt;br&gt;Correctness · Faithfulness&lt;br&gt;Tool use · Safety etc." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C55A11;strokeColor=#8B3A08;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1060" y="410" width="155" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="e5" value="&lt;b&gt;Result Aggregator&lt;/b&gt;&lt;br&gt;Collects scores · Computes&lt;br&gt;composite / RAGAS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C55A11;strokeColor=#8B3A08;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1240" y="410" width="155" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- engine internal arrows -->
+    <mxCell id="ea1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#8B3A08;strokeWidth=1.5;endArrow=block;endFill=1;" edge="1" source="e1" target="e2" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ea2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#8B3A08;strokeWidth=1.5;endArrow=block;endFill=1;" edge="1" source="e2" target="e3" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ea3" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#8B3A08;strokeWidth=1.5;endArrow=block;endFill=1;" edge="1" source="e3" target="e4" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ea4" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#8B3A08;strokeWidth=1.5;endArrow=block;endFill=1;" edge="1" source="e4" target="e5" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+    <!-- frontend trigger → engine -->
+    <mxCell id="fe1" value="dispatch job" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#1D6F42;strokeWidth=2;endArrow=block;endFill=1;fontColor=#1D6F42;fontSize=10;labelBackgroundColor=#E2EFDA;" edge="1" source="f3" target="e1" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <!-- engine → frontend results -->
+    <mxCell id="fe2" value="results ready" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#C55A11;strokeWidth=2;endArrow=block;endFill=1;fontColor=#C55A11;fontSize=10;labelBackgroundColor=#FCE4D6;" edge="1" source="e5" target="f5" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- AI MODELS LANE -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <mxCell id="m1" value="☁️  &lt;b&gt;Cloud Models&lt;/b&gt;&lt;br&gt;GPT-4o · Claude · Gemini&lt;br&gt;(via API key)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5B2C8D;strokeColor=#3A1A6B;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="580" y="555" width="175" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="m2" value="🏠  &lt;b&gt;Self-Hosted Models&lt;/b&gt;&lt;br&gt;Llama · Mistral · DeepSeek&lt;br&gt;(Ollama / vLLM)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5B2C8D;strokeColor=#3A1A6B;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="790" y="555" width="175" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="m3" value="⚖️  &lt;b&gt;LLM Judge&lt;/b&gt;&lt;br&gt;Scores open-ended answers&lt;br&gt;(default: GPT-4o-mini)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7B3F9E;strokeColor=#5B2C8D;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1000" y="555" width="175" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="m4" value="🔭  &lt;b&gt;Vision Judge&lt;/b&gt;&lt;br&gt;For multimodal RAG&lt;br&gt;(GPT-4o / Gemini Pro)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5B2C8D;strokeColor=#3A1A6B;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1210" y="555" width="175" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- engine → models -->
+    <mxCell id="em1" value="send prompt" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#5B2C8D;strokeWidth=1.5;endArrow=block;endFill=1;fontColor=#5B2C8D;fontSize=10;" edge="1" source="e1" target="m1" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="em2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#5B2C8D;strokeWidth=1.5;endArrow=block;endFill=1;" edge="1" source="e1" target="m2" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="em3" value="score answer" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#7B3F9E;strokeWidth=1.5;endArrow=block;endFill=1;fontColor=#7B3F9E;fontSize=10;" edge="1" source="e4" target="m3" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="em4" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#5B2C8D;strokeWidth=1.5;endArrow=block;endFill=1;dashed=1;" edge="1" source="e4" target="m4" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <!-- models → engine return -->
+    <mxCell id="mr1" value="response" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#5B2C8D;strokeWidth=1.5;endArrow=open;endFill=0;fontColor=#5B2C8D;fontSize=10;dashed=1;" edge="1" source="m1" target="e3" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="mr2" value="score + reason" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#7B3F9E;strokeWidth=1.5;endArrow=open;endFill=0;fontColor=#7B3F9E;fontSize=10;dashed=1;" edge="1" source="m3" target="e5" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- STORAGE LANE -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <mxCell id="db1" value="🗄  &lt;b&gt;PostgreSQL&lt;/b&gt;&lt;br&gt;Eval runs · Scores&lt;br&gt;Model configs · Users" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#B8860B;strokeColor=#8B6408;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="430" y="695" width="155" height="90" as="geometry" />
+    </mxCell>
+    <mxCell id="db2" value="⚡  &lt;b&gt;Redis&lt;/b&gt;&lt;br&gt;Job queue · Progress&lt;br&gt;tracking · Caching" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#B8860B;strokeColor=#8B6408;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="630" y="695" width="155" height="90" as="geometry" />
+    </mxCell>
+    <mxCell id="db3" value="📦  &lt;b&gt;Dataset Registry&lt;/b&gt;&lt;br&gt;MMLU · SQuAD · GAIA&lt;br&gt;+ user custom datasets" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#B8860B;strokeColor=#8B6408;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="830" y="695" width="155" height="90" as="geometry" />
+    </mxCell>
+    <mxCell id="db4" value="📄  &lt;b&gt;Results Store&lt;/b&gt;&lt;br&gt;Per-question scores · reasons&lt;br&gt;Historical trend data" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#B8860B;strokeColor=#8B6408;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1030" y="695" width="155" height="90" as="geometry" />
+    </mxCell>
+    <mxCell id="db5" value="📤  &lt;b&gt;Export Storage&lt;/b&gt;&lt;br&gt;PDF reports · CSV · JSON&lt;br&gt;download links" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#B8860B;strokeColor=#8B6408;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1230" y="695" width="155" height="90" as="geometry" />
+    </mxCell>
+
+    <!-- engine → db -->
+    <mxCell id="ed1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#B8860B;strokeWidth=1.5;endArrow=block;endFill=1;" edge="1" source="e2" target="db3" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ed2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#B8860B;strokeWidth=1.5;endArrow=block;endFill=1;" edge="1" source="e3" target="db2" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ed3" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#B8860B;strokeWidth=1.5;endArrow=block;endFill=1;" edge="1" source="e5" target="db4" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ed4" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#B8860B;strokeWidth=1.5;endArrow=block;endFill=1;" edge="1" source="e5" target="db1" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+    <!-- frontend reads from db -->
+    <mxCell id="fd1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#1D6F42;strokeWidth=1.5;endArrow=open;endFill=0;dashed=1;" edge="1" source="f5" target="db4" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fd2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#1D6F42;strokeWidth=1.5;endArrow=open;endFill=0;dashed=1;" edge="1" source="f6" target="db5" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fd3" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#1D6F42;strokeWidth=1.5;endArrow=open;endFill=0;dashed=1;" edge="1" source="f2" target="db3" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- OPTIONAL NODES (DSPy / Unsloth) -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <mxCell id="opt_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3CD;strokeColor=#F0AD4E;strokeWidth=2;dashed=1;opacity=60;" vertex="1" parent="1">
+      <mxGeometry x="30" y="830" width="1600" height="120" as="geometry" />
+    </mxCell>
+    <mxCell id="opt_label" value="✦  OPTIONAL — User-Initiated Only (never auto-triggered)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12;fontStyle=3;fontColor=#C55A11;" vertex="1" parent="1">
+      <mxGeometry x="45" y="835" width="400" height="25" as="geometry" />
+    </mxCell>
+
+    <mxCell id="opt1" value="🧠  &lt;b&gt;DSPy Prompt Optimiser&lt;/b&gt;&lt;br&gt;User clicks 'Optimise' when score is low&lt;br&gt;Auto-rewrites prompt · Shows before/after" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFA500;strokeColor=#C55A11;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="420" y="858" width="240" height="75" as="geometry" />
+    </mxCell>
+    <mxCell id="opt2" value="🔧  &lt;b&gt;Unsloth Fine-Tuner&lt;/b&gt;&lt;br&gt;User clicks 'Fine-tune' · Exports failures as JSONL&lt;br&gt;LoRA/QLoRA on open-source model · Re-evaluates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFA500;strokeColor=#C55A11;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="720" y="858" width="280" height="75" as="geometry" />
+    </mxCell>
+    <mxCell id="opt_note" value="Supported models: Llama 4, DeepSeek R1, Qwen 3.5, Mistral, Phi-4" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;fontStyle=2;fontColor=#8B6408;" vertex="1" parent="1">
+      <mxGeometry x="1040" y="882" width="550" height="25" as="geometry" />
+    </mxCell>
+
+    <!-- optional trigger arrows -->
+    <mxCell id="oa1" value="low score →\nuser clicks" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#F0AD4E;strokeWidth=2;endArrow=block;endFill=1;dashed=1;fontColor=#C55A11;fontSize=10;" edge="1" source="f6" target="opt1" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="oa2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#F0AD4E;strokeWidth=2;endArrow=block;endFill=1;dashed=1;" edge="1" source="f6" target="opt2" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- LEGEND -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <mxCell id="legend_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F9F9F9;strokeColor=#CCCCCC;strokeWidth=1;" vertex="1" parent="1">
+      <mxGeometry x="30" y="965" width="700" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="leg_title" value="Legend:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#1B3A5C;" vertex="1" parent="1">
+      <mxGeometry x="45" y="970" width="80" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="leg1" value="───►  Data / request flow" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;fontColor=#333333;" vertex="1" parent="1">
+      <mxGeometry x="45" y="990" width="180" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="leg2" value="- - -►  Response / async return" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;fontColor=#333333;" vertex="1" parent="1">
+      <mxGeometry x="240" y="990" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="leg3" value="✦  Optional / user-initiated only" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;fontColor=#C55A11;" vertex="1" parent="1">
+      <mxGeometry x="460" y="990" width="250" height="20" as="geometry" />
+    </mxCell>
+
+  </root>
+</mxGraphModel>
