@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THOR – T Mark Concept</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #F0A500;
+    --gold-bright: #FFD060;
+    --gold-dim: #7A5200;
+    --dark: #080A0D;
+    --dark-2: #0F1117;
+    --dark-3: #171B24;
+    --steel: #252A36;
+    --text: #9AA0B0;
+    --white: #E8ECF5;
+  }
+
+  body {
+    background: var(--dark);
+    font-family: 'Rajdhani', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    padding: 80px 24px;
+  }
+
+  .section-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  /* ── CARDS ── */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: center;
+    width: 100%;
+    max-width: 1100px;
+  }
+
+  .card {
+    background: var(--dark-2);
+    border: 1px solid var(--steel);
+    border-radius: 3px;
+    padding: 56px 48px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    min-width: 280px;
+    max-width: 440px;
+  }
+
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% -10%, rgba(240,165,0,0.09) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .card-label {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+  }
+
+  /* ── T MARK ── */
+  .t-mark {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ── WORDMARK ── */
+  .wm-main {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 58px;
+    letter-spacing: 8px;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .wm-sub {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .wm-tag {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: var(--text);
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+
+  .hr {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--steel), transparent);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  @keyframes draw {
+    from { stroke-dashoffset: 300; }
+    to   { stroke-dashoffset: 0; }
+  }
+
+  @keyframes glow-breathe {
+    0%, 100% { filter: drop-shadow(0 0 6px rgba(240,165,0,0.5)); }
+    50%       { filter: drop-shadow(0 0 18px rgba(255,208,96,0.9)); }
+  }
+
+  .glow-anim {
+    animation: glow-breathe 3s ease-in-out infinite;
+  }
+
+  .node-pulse {
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+
+  /* light card */
+  .light {
+    background: #EFEDE5;
+    border-color: #D0C8B8;
+  }
+  .light::after {
+    background: radial-gradient(ellipse at 50% -10%, rgba(180,120,0,0.1) 0%, transparent 60%);
+  }
+  .light .wm-main  { color: #0A0B0E; }
+  .light .wm-sub   { color: #9A6800; }
+  .light .wm-tag   { color: #444; }
+  .light .card-label { color: #9A6800; }
+  .light .hr       { background: linear-gradient(90deg, transparent, #C8BEA8, transparent); }
+</style>
+</head>
+<body>
+
+<div class="section-title">THOR — T Mark Concepts</div>
+
+<!-- ══════════════════════════════════════
+     CONCEPT A: T as a data tower / hub
+     Horizontal bar = the orchestration layer
+     Vertical stem = the pipeline going down
+     Nodes on bar   = connected tools
+═══════════════════════════════════════ -->
+<div class="row">
+
+  <div class="card" style="max-width: 560px; flex: 2;">
+    <span class="card-label">Concept A · Hub Tower</span>
+
+    <div class="t-mark">
+      <svg width="180" height="160" viewBox="0 0 180 160" fill="none" xmlns="http://www.w3.org/2000/svg" class="glow-anim">
+
+        <!-- Glow behind T -->
+        <ellipse cx="90" cy="70" rx="60" ry="50" fill="rgba(240,165,0,0.04)"/>
+
+        <!-- ── Horizontal bar of T ── -->
+        <!-- Bar body -->
+        <rect x="18" y="38" width="144" height="14" rx="2" fill="url(#barGrad)"/>
+        <!-- Bar top edge highlight -->
+        <rect x="18" y="38" width="144" height="2" rx="1" fill="rgba(255,210,80,0.5)"/>
+
+        <!-- ── Vertical stem of T ── -->
+        <rect x="80" y="52" width="20" height="88" rx="2" fill="url(#stemGrad)"/>
+        <!-- Stem left edge highlight -->
+        <rect x="80" y="52" width="2" height="88" rx="1" fill="rgba(255,210,80,0.3)"/>
+
+        <!-- ── Node dots on bar (tools) ── -->
+        <!-- Left end node -->
+        <circle cx="18" cy="45" r="7" fill="#0F1117" stroke="#F0A500" stroke-width="2"/>
+        <circle cx="18" cy="45" r="3" fill="#F0A500" class="node-pulse"/>
+
+        <!-- Left-mid node -->
+        <circle cx="52" cy="45" r="6" fill="#0F1117" stroke="#F0A500" stroke-width="1.5" opacity="0.8"/>
+        <circle cx="52" cy="45" r="2.5" fill="#F0A500" class="node-pulse" style="animation-delay:0.4s"/>
+
+        <!-- Centre-left node -->
+        <circle cx="76" cy="45" r="5" fill="#0F1117" stroke="#F0A500" stroke-width="1.5" opacity="0.7"/>
+        <circle cx="76" cy="45" r="2" fill="#F0A500" class="node-pulse" style="animation-delay:0.8s"/>
+
+        <!-- Centre top node (crown) -->
+        <circle cx="90" cy="30" r="9" fill="#0F1117" stroke="#F0A500" stroke-width="2.5"/>
+        <!-- Lightning mini bolt inside crown node -->
+        <path d="M92 24 L87 31 L91 31 L88 36 L95 29 L90.5 29 Z" fill="#FFD060"/>
+
+        <!-- Centre-right node -->
+        <circle cx="104" cy="45" r="5" fill="#0F1117" stroke="#F0A500" stroke-width="1.5" opacity="0.7"/>
+        <circle cx="104" cy="45" r="2" fill="#F0A500" class="node-pulse" style="animation-delay:1.2s"/>
+
+        <!-- Right-mid node -->
+        <circle cx="128" cy="45" r="6" fill="#0F1117" stroke="#F0A500" stroke-width="1.5" opacity="0.8"/>
+        <circle cx="128" cy="45" r="2.5" fill="#F0A500" class="node-pulse" style="animation-delay:0.6s"/>
+
+        <!-- Right end node -->
+        <circle cx="162" cy="45" r="7" fill="#0F1117" stroke="#F0A500" stroke-width="2"/>
+        <circle cx="162" cy="45" r="3" fill="#F0A500" class="node-pulse" style="animation-delay:1s"/>
+
+        <!-- ── Stem nodes (pipeline steps) ── -->
+        <circle cx="90" cy="78"  r="4.5" fill="#0F1117" stroke="#F0A500" stroke-width="1.5" opacity="0.7"/>
+        <circle cx="90" cy="78"  r="1.8" fill="#F0A500" class="node-pulse" style="animation-delay:0.3s"/>
+
+        <circle cx="90" cy="108" r="4.5" fill="#0F1117" stroke="#F0A500" stroke-width="1.5" opacity="0.55"/>
+        <circle cx="90" cy="108" r="1.8" fill="#F0A500" class="node-pulse" style="animation-delay:0.9s"/>
+
+        <!-- Bottom terminus -->
+        <circle cx="90" cy="140" r="6" fill="#0F1117" stroke="#F0A500" stroke-width="2" opacity="0.9"/>
+        <circle cx="90" cy="140" r="2.5" fill="#F0A500"/>
+
+        <!-- Connector lines from crown to bar -->
+        <line x1="90" y1="39" x2="90" y2="38" stroke="#FFD060" stroke-width="2" opacity="0.7"/>
+
+        <!-- Subtle scan line across bar -->
+        <rect x="18" y="43" width="144" height="1" fill="rgba(255,255,255,0.04)"/>
+
+        <defs>
+          <linearGradient id="barGrad" x1="18" y1="38" x2="162" y2="52" gradientUnits="userSpaceOnUse">
+            <stop offset="0%"   stop-color="#1C2130"/>
+            <stop offset="50%"  stop-color="#2A3040"/>
+            <stop offset="100%" stop-color="#1C2130"/>
+          </linearGradient>
+          <linearGradient id="stemGrad" x1="80" y1="52" x2="100" y2="140" gradientUnits="userSpaceOnUse">
+            <stop offset="0%"   stop-color="#2A3040"/>
+            <stop offset="100%" stop-color="#141820" stop-opacity="0.4"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+      <div class="wm-main">THOR</div>
+      <div class="wm-sub">Total Hub for Orchestration Resolution</div>
+    </div>
+
+    <div class="wm-tag">RAG · Doc Gen · Analytics · Translation · LLM Chat</div>
+
+    <div class="hr"></div>
+
+    <!-- swatch row -->
+    <div style="display:flex; gap:10px;">
+      <div style="width:20px;height:20px;border-radius:50%;background:#F0A500;border:1px solid rgba(255,255,255,0.1)"></div>
+      <div style="width:20px;height:20px;border-radius:50%;background:#FFD060;border:1px solid rgba(255,255,255,0.1)"></div>
+      <div style="width:20px;height:20px;border-radius:50%;background:#2A3040;border:1px solid rgba(255,255,255,0.1)"></div>
+      <div style="width:20px;height:20px;border-radius:50%;background:#080A0D;border:1px solid rgba(255,255,255,0.1)"></div>
+      <div style="width:20px;height:20px;border-radius:50%;background:#E8ECF5;border:1px solid rgba(255,255,255,0.1)"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════
+     CONCEPT B: Bold geometric T with bolt
+     Clean, architectural, strong
+═══════════════════════════════════════ -->
+<div class="row">
+
+  <!-- B-Dark -->
+  <div class="card">
+    <span class="card-label">Concept B · Geometric</span>
+
+    <div class="t-mark">
+      <svg width="120" height="130" viewBox="0 0 120 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer glow -->
+        <ellipse cx="60" cy="60" rx="55" ry="52" fill="rgba(240,165,0,0.05)"/>
+
+        <!-- ── T shape: chamfered, angular ── -->
+        <!-- Horizontal bar -->
+        <path d="M8 22 L112 22 L112 46 L70 46 L70 118 L50 118 L50 46 L8 46 Z"
+          fill="url(#tFill)" />
+
+        <!-- Inner cut / negative space trick for depth -->
+        <path d="M10 24 L110 24 L110 44 L68 44 L68 116 L52 116 L52 44 L10 44 Z"
+          fill="none" stroke="rgba(255,200,60,0.12)" stroke-width="1"/>
+
+        <!-- Lightning bolt overlay — slices through the T -->
+        <path d="M68 22 L52 56 L62 56 L52 80 L76 46 L65 46 Z"
+          fill="url(#boltFill)" class="glow-anim"/>
+
+        <!-- Corner accent marks -->
+        <path d="M8 22 L8 30" stroke="#F0A500" stroke-width="2.5" stroke-linecap="square" opacity="0.8"/>
+        <path d="M8 22 L18 22" stroke="#F0A500" stroke-width="2.5" stroke-linecap="square" opacity="0.8"/>
+        <path d="M112 22 L112 30" stroke="#F0A500" stroke-width="2.5" stroke-linecap="square" opacity="0.8"/>
+        <path d="M112 22 L102 22" stroke="#F0A500" stroke-width="2.5" stroke-linecap="square" opacity="0.8"/>
+        <path d="M50 118 L50 110" stroke="#F0A500" stroke-width="2.5" stroke-linecap="square" opacity="0.8"/>
+        <path d="M50 118 L58 118" stroke="#F0A500" stroke-width="2.5" stroke-linecap="square" opacity="0.8"/>
+        <path d="M70 118 L70 110" stroke="#F0A500" stroke-width="2.5" stroke-linecap="square" opacity="0.8"/>
+        <path d="M70 118 L62 118" stroke="#F0A500" stroke-width="2.5" stroke-linecap="square" opacity="0.8"/>
+
+        <!-- Top edge gold line -->
+        <line x1="8" y1="22" x2="112" y2="22" stroke="#F0A500" stroke-width="1.5" opacity="0.5"/>
+
+        <defs>
+          <linearGradient id="tFill" x1="8" y1="22" x2="112" y2="118" gradientUnits="userSpaceOnUse">
+            <stop offset="0%"   stop-color="#232838"/>
+            <stop offset="100%" stop-color="#141820"/>
+          </linearGradient>
+          <linearGradient id="boltFill" x1="52" y1="22" x2="76" y2="80" gradientUnits="userSpaceOnUse">
+            <stop offset="0%"   stop-color="#FFD060"/>
+            <stop offset="100%" stop-color="#F0A500" stop-opacity="0.7"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <div style="display:flex; flex-direction:column; align-items:center; gap:5px;">
+      <div class="wm-main">THOR</div>
+      <div class="wm-sub">Total Hub for Orchestration Resolution</div>
+    </div>
+    <div class="wm-tag">AI-Powered Platform</div>
+  </div>
+
+  <!-- B-Light -->
+  <div class="card light">
+    <span class="card-label">Concept B · Light</span>
+
+    <div class="t-mark">
+      <svg width="120" height="130" viewBox="0 0 120 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="60" cy="60" rx="55" ry="52" fill="rgba(180,120,0,0.06)"/>
+        <path d="M8 22 L112 22 L112 46 L70 46 L70 118 L50 118 L50 46 L8 46 Z"
+          fill="url(#tFillL)"/>
+        <path d="M68 22 L52 56 L62 56 L52 80 L76 46 L65 46 Z"
+          fill="url(#boltFillL)"/>
+        <path d="M8 22 L8 30"   stroke="#9A6800" stroke-width="2.5" stroke-linecap="square" opacity="0.8"/>
+        <path d="M8 22 L18 22"  stroke="#9A6800" stroke-width="2.5" stroke-linecap="square" opacity="0.8"/>
+        <path d="M112 22 L112 30" stroke="#9A6800" stroke-width="2.5" stroke-linecap="square" opacity="0.8"/>
+        <path d="M112 22 L102 22" stroke="#9A6800" stroke-width="2.5" stroke-linecap="square" opacity="0.8"/>
+        <path d="M50 118 L50 110" stroke="#9A6800" stroke-width="2.5" stroke-linecap="square" opacity="0.8"/>
+        <path d="M50 118 L58 118" stroke="#9A6800" stroke-width="2.5" stroke-linecap="square" opacity="0.8"/>
+        <path d="M70 118 L70 110" stroke="#9A6800" stroke-width="2.5" stroke-linecap="square" opacity="0.8"/>
+        <path d="M70 118 L62 118" stroke="#9A6800" stroke-width="2.5" stroke-linecap="square" opacity="0.8"/>
+        <line x1="8" y1="22" x2="112" y2="22" stroke="#9A6800" stroke-width="1.5" opacity="0.5"/>
+        <defs>
+          <linearGradient id="tFillL" x1="8" y1="22" x2="112" y2="118" gradientUnits="userSpaceOnUse">
+            <stop offset="0%"   stop-color="#DDD8CC"/>
+            <stop offset="100%" stop-color="#C8C0B0"/>
+          </linearGradient>
+          <linearGradient id="boltFillL" x1="52" y1="22" x2="76" y2="80" gradientUnits="userSpaceOnUse">
+            <stop offset="0%"   stop-color="#C88A00"/>
+            <stop offset="100%" stop-color="#7A5200"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <div style="display:flex; flex-direction:column; align-items:center; gap:5px;">
+      <div class="wm-main">THOR</div>
+      <div class="wm-sub">Total Hub for Orchestration Resolution</div>
+    </div>
+    <div class="wm-tag" style="color:#555;">AI-Powered Platform</div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════
+     CONCEPT C: Inline logo – custom T wordmark
+     The "T" in THOR IS the mark
+═══════════════════════════════════════ -->
+<div class="row">
+  <div class="card" style="max-width:640px; flex:2;">
+    <span class="card-label">Concept C · Inline T-as-Letter</span>
+
+    <!-- The word THOR where the T is the branded mark -->
+    <div style="position:relative; display:flex; align-items:flex-end; gap:0;">
+      <svg width="220" height="100" viewBox="0 0 220 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- ═══ BRANDED T ═══ -->
+        <!-- T bar -->
+        <rect x="0" y="0" width="72" height="18" rx="2" fill="url(#tInlineBar)"/>
+        <rect x="0" y="0" width="72" height="2.5" fill="rgba(255,210,80,0.6)"/>
+        <!-- T stem -->
+        <rect x="26" y="18" width="20" height="72" rx="2" fill="url(#tInlineStem)"/>
+        <!-- Lightning in T -->
+        <path d="M38 2 L28 22 L35 22 L27 38 L48 16 L40 16 Z"
+          fill="url(#tInlineBolt)" class="glow-anim"/>
+        <!-- Node on T bar ends -->
+        <circle cx="0"  cy="9" r="5" fill="#0F1117" stroke="#F0A500" stroke-width="1.5"/>
+        <circle cx="72" cy="9" r="5" fill="#0F1117" stroke="#F0A500" stroke-width="1.5"/>
+        <circle cx="0"  cy="9" r="2" fill="#F0A500" class="node-pulse"/>
+        <circle cx="72" cy="9" r="2" fill="#F0A500" class="node-pulse" style="animation-delay:0.7s"/>
+
+        <!-- ═══ HOR in Bebas-style drawn text ═══ -->
+        <!-- We'll use SVG text with Bebas Neue -->
+        <text x="88" y="82" 
+          font-family="'Bebas Neue', sans-serif" 
+          font-size="90" 
+          fill="url(#horGrad)"
+          letter-spacing="4">HOR</text>
+
+        <defs>
+          <linearGradient id="tInlineBar" x1="0" y1="0" x2="72" y2="18" gradientUnits="userSpaceOnUse">
+            <stop offset="0%"   stop-color="#2A3040"/>
+            <stop offset="50%"  stop-color="#343B50"/>
+            <stop offset="100%" stop-color="#2A3040"/>
+          </linearGradient>
+          <linearGradient id="tInlineStem" x1="26" y1="18" x2="46" y2="90" gradientUnits="userSpaceOnUse">
+            <stop offset="0%"   stop-color="#343B50"/>
+            <stop offset="100%" stop-color="#151920" stop-opacity="0.5"/>
+          </linearGradient>
+          <linearGradient id="tInlineBolt" x1="27" y1="2" x2="48" y2="38" gradientUnits="userSpaceOnUse">
+            <stop offset="0%"   stop-color="#FFD060"/>
+            <stop offset="100%" stop-color="#F0A500"/>
+          </linearGradient>
+          <linearGradient id="horGrad" x1="88" y1="0" x2="88" y2="90" gradientUnits="userSpaceOnUse">
+            <stop offset="0%"   stop-color="#E8ECF5"/>
+            <stop offset="100%" stop-color="#9AA0B0"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="wm-sub" style="letter-spacing:4px;">Total Hub for Orchestration Resolution</div>
+    <div class="wm-tag">RAG · Doc Gen · Analytics · Translation · LLM Chat</div>
+
+    <div class="hr"></div>
+    <div style="font-size:10px; font-weight:600; letter-spacing:2px; color:var(--text); opacity:0.5; text-transform:uppercase; text-align:center;">
+      The T is the mark — the letter itself becomes the logo
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

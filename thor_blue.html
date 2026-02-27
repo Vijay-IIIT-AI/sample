@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THOR – Samsung Blue Theme</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --samsung-blue:    #1428A0;
+  --samsung-blue2:   #1A34B8;
+  --samsung-blue3:   #0F1E78;
+  --samsung-sky:     #4A90D9;
+  --samsung-light:   #C8DCFF;
+  --samsung-white:   #FFFFFF;
+  --samsung-offwhite:#F4F6FC;
+  --samsung-pale:    #E8EEFF;
+  --samsung-gray:    #6B7A99;
+  --samsung-border:  #D0D8F0;
+}
+
+body {
+  background: var(--samsung-offwhite);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--samsung-blue3);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0 80px;
+}
+
+/* ── TOP NAV ── */
+.topbar {
+  width: 100%;
+  background: var(--samsung-white);
+  border-bottom: 1px solid var(--samsung-border);
+  padding: 16px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.topbar-brand {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--samsung-blue);
+}
+.topbar-tag {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  color: var(--samsung-gray);
+}
+
+/* ── HERO ── */
+.hero {
+  width: 100%;
+  background: linear-gradient(160deg, var(--samsung-blue) 0%, var(--samsung-blue3) 55%, #0A1560 100%);
+  padding: 90px 40px 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background grid mesh */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* Radial glow */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(74,144,217,0.25) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--samsung-light);
+  opacity: 0.7;
+  z-index: 1;
+}
+
+/* ── PRIMARY LOGO ── */
+.primary-logo {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  z-index: 1;
+}
+
+.wm-main {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 72px;
+  letter-spacing: 8px;
+  color: var(--samsung-white);
+  line-height: 1;
+}
+
+.wm-sub {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3.5px;
+  color: var(--samsung-light);
+  text-transform: uppercase;
+  margin-top: 6px;
+  opacity: 0.85;
+}
+
+.wm-tag {
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+/* ── CARDS ROW ── */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 1080px;
+  padding: 48px 40px 0;
+}
+
+.card {
+  background: var(--samsung-white);
+  border: 1px solid var(--samsung-border);
+  border-radius: 12px;
+  padding: 52px 36px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 20px rgba(20,40,160,0.06);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--samsung-blue), var(--samsung-sky));
+  border-radius: 12px 12px 0 0;
+}
+
+.card-label {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  color: var(--samsung-blue);
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.hr {
+  width: 100%;
+  height: 1px;
+  background: var(--samsung-border);
+}
+
+/* cap pills */
+.caps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  justify-content: center;
+}
+.pill {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: var(--samsung-pale);
+  color: var(--samsung-blue);
+  border: 1px solid var(--samsung-border);
+}
+
+/* ── LIGHT WORDMARK INSIDE CARD ── */
+.card-wm-main {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 52px;
+  letter-spacing: 8px;
+  color: var(--samsung-blue3);
+  line-height: 1;
+}
+.card-wm-sub {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--samsung-blue);
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes breathe {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+@keyframes ripple {
+  0%   { r: 2; opacity: 0.7; }
+  100% { r: 30; opacity: 0; }
+}
+@keyframes flow {
+  from { stroke-dashoffset: 28; }
+  to   { stroke-dashoffset: 0; }
+}
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.breathe { animation: breathe 3s ease-in-out infinite; }
+.rp1 { animation: ripple 2.6s ease-out infinite; }
+.rp2 { animation: ripple 2.6s ease-out 0.85s infinite; }
+.rp3 { animation: ripple 2.6s ease-out 1.7s infinite; }
+.flow { animation: flow 1.8s linear infinite; stroke-dasharray: 5 4; }
+.rotate { animation: rotate 14s linear infinite; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-brand">THOR · Brand Identity</div>
+  <div class="topbar-tag">Total Hub for Orchestration Resolution</div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     HERO – PRIMARY LOGO ON SAMSUNG BLUE
+═══════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-label">Primary Identity · Dark Blue</div>
+
+  <!-- PRIMARY LOGO: T mark + wordmark -->
+  <div class="primary-logo">
+
+    <!-- T MARK -->
+    <svg width="110" height="100" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- Soft glow behind T -->
+      <ellipse cx="55" cy="55" rx="50" ry="46" fill="rgba(74,144,217,0.12)"/>
+
+      <!-- ── T BAR ── -->
+      <rect x="4" y="22" width="102" height="24" rx="3" fill="rgba(255,255,255,0.12)"/>
+      <!-- Top highlight edge -->
+      <rect x="4" y="22" width="102" height="2.5" rx="1" fill="rgba(255,255,255,0.45)"/>
+      <!-- Bottom soft shadow -->
+      <rect x="4" y="43" width="102" height="1.5" fill="rgba(74,144,217,0.4)"/>
+
+      <!-- ── T STEM ── -->
+      <rect x="43" y="46" width="24" height="60" rx="3" fill="rgba(255,255,255,0.12)"/>
+      <rect x="43" y="46" width="2" height="60" rx="1" fill="rgba(255,255,255,0.25)"/>
+
+      <!-- Ripple signal from left end of bar -->
+      <circle cx="4"  cy="34" r="2" fill="none" stroke="rgba(200,220,255,0.8)" stroke-width="1" class="rp1"/>
+      <circle cx="4"  cy="34" r="2" fill="none" stroke="rgba(200,220,255,0.6)" stroke-width="0.8" class="rp2"/>
+
+      <!-- Ripple signal from right end of bar -->
+      <circle cx="106" cy="34" r="2" fill="none" stroke="rgba(200,220,255,0.8)" stroke-width="1" class="rp1" style="animation-delay:0.5s"/>
+      <circle cx="106" cy="34" r="2" fill="none" stroke="rgba(200,220,255,0.6)" stroke-width="0.8" class="rp2" style="animation-delay:1.35s"/>
+
+      <!-- Flow dashes on bar -->
+      <line x1="4" y1="34" x2="43" y2="34" stroke="rgba(200,220,255,0.4)" stroke-width="1" stroke-dasharray="5 4" class="flow"/>
+      <line x1="67" y1="34" x2="106" y2="34" stroke="rgba(200,220,255,0.4)" stroke-width="1" stroke-dasharray="5 4" class="flow" style="animation-delay:0.9s"/>
+
+      <!-- Flow dash on stem -->
+      <line x1="55" y1="46" x2="55" y2="106" stroke="rgba(200,220,255,0.25)" stroke-width="1" stroke-dasharray="5 4" class="flow" style="animation-delay:0.4s"/>
+
+      <!-- Crown node (top centre of T bar) -->
+      <circle cx="55" cy="22" r="6" fill="rgba(20,40,160,0.6)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+      <circle cx="55" cy="22" r="2.5" fill="white" class="breathe"/>
+
+      <!-- Left end dot -->
+      <circle cx="4"   cy="34" r="4"   fill="rgba(255,255,255,0.9)"/>
+      <!-- Right end dot -->
+      <circle cx="106" cy="34" r="4"   fill="rgba(255,255,255,0.9)"/>
+      <!-- Stem bottom dot -->
+      <circle cx="55"  cy="106" r="4"  fill="rgba(255,255,255,0)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+      <circle cx="55"  cy="106" r="1.5" fill="rgba(200,220,255,0.8)" class="breathe"/>
+
+    </svg>
+
+    <!-- WORDMARK -->
+    <div style="padding-left: 10px; display:flex; flex-direction:column; gap:6px;">
+      <div class="wm-main">THOR</div>
+      <div class="wm-sub">Total Hub for Orchestration Resolution</div>
+    </div>
+
+  </div>
+
+  <div class="wm-tag">RAG · Document Gen · Analytics · Translation · LLM Chat</div>
+
+  <!-- Colour palette strip -->
+  <div style="display:flex; gap:12px; align-items:center; z-index:1; margin-top:8px;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
+      <div style="width:32px;height:32px;border-radius:50%;background:#1428A0;border:2px solid rgba(255,255,255,0.3);"></div>
+      <span style="font-size:8px;color:rgba(255,255,255,0.5);letter-spacing:1px;">#1428A0</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
+      <div style="width:32px;height:32px;border-radius:50%;background:#4A90D9;border:2px solid rgba(255,255,255,0.3);"></div>
+      <span style="font-size:8px;color:rgba(255,255,255,0.5);letter-spacing:1px;">#4A90D9</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
+      <div style="width:32px;height:32px;border-radius:50%;background:#FFFFFF;border:2px solid rgba(255,255,255,0.3);"></div>
+      <span style="font-size:8px;color:rgba(255,255,255,0.5);letter-spacing:1px;">#FFFFFF</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
+      <div style="width:32px;height:32px;border-radius:50%;background:#C8DCFF;border:2px solid rgba(255,255,255,0.3);"></div>
+      <span style="font-size:8px;color:rgba(255,255,255,0.5);letter-spacing:1px;">#C8DCFF</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
+      <div style="width:32px;height:32px;border-radius:50%;background:#F4F6FC;border:2px solid rgba(255,255,255,0.3);"></div>
+      <span style="font-size:8px;color:rgba(255,255,255,0.5);letter-spacing:1px;">#F4F6FC</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════
+     VARIANT CARDS
+═══════════════════════════════════════ -->
+<div class="cards">
+
+  <!-- CARD 1: White background, blue logo -->
+  <div class="card">
+    <span class="card-label">Light · Primary</span>
+
+    <svg width="90" height="84" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="55" cy="55" rx="50" ry="46" fill="rgba(20,40,160,0.04)"/>
+      <rect x="4" y="22" width="102" height="24" rx="3" fill="url(#tBlue)"/>
+      <rect x="4" y="22" width="102" height="2.5" rx="1" fill="rgba(20,40,160,0.3)"/>
+      <rect x="43" y="46" width="24" height="60" rx="3" fill="url(#stemBlue)"/>
+      <rect x="43" y="46" width="2" height="60" rx="1" fill="rgba(20,40,160,0.15)"/>
+      <line x1="4" y1="34" x2="43" y2="34" stroke="rgba(20,40,160,0.2)" stroke-width="1" stroke-dasharray="5 4" class="flow"/>
+      <line x1="67" y1="34" x2="106" y2="34" stroke="rgba(20,40,160,0.2)" stroke-width="1" stroke-dasharray="5 4" class="flow" style="animation-delay:0.9s"/>
+      <circle cx="55"  cy="22"  r="6"   fill="white" stroke="#1428A0" stroke-width="1.5"/>
+      <circle cx="55"  cy="22"  r="2.5" fill="#1428A0" class="breathe"/>
+      <circle cx="4"   cy="34"  r="4"   fill="#1428A0"/>
+      <circle cx="106" cy="34"  r="4"   fill="#1428A0"/>
+      <circle cx="55"  cy="106" r="4"   fill="none" stroke="#1428A0" stroke-width="1.5"/>
+      <circle cx="55"  cy="106" r="1.5" fill="#4A90D9" class="breathe"/>
+      <defs>
+        <linearGradient id="tBlue" x1="4" y1="22" x2="106" y2="46" gradientUnits="userSpaceOnUse">
+          <stop offset="0%"   stop-color="#1A34B8"/>
+          <stop offset="50%"  stop-color="#1428A0"/>
+          <stop offset="100%" stop-color="#1A34B8"/>
+        </linearGradient>
+        <linearGradient id="stemBlue" x1="43" y1="46" x2="67" y2="106" gradientUnits="userSpaceOnUse">
+          <stop offset="0%"   stop-color="#1428A0"/>
+          <stop offset="100%" stop-color="#4A90D9" stop-opacity="0.5"/>
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <div class="card-wm-main">THOR</div>
+      <div class="card-wm-sub">Total Hub for Orchestration Resolution</div>
+    </div>
+
+    <div class="hr"></div>
+    <div class="caps">
+      <div class="pill">RAG Builder</div>
+      <div class="pill">Doc Gen</div>
+      <div class="pill">Analytics</div>
+      <div class="pill">Translation</div>
+      <div class="pill">LLM Chat</div>
+    </div>
+  </div>
+
+  <!-- CARD 2: Badge / Seal variant -->
+  <div class="card">
+    <span class="card-label">Badge · Seal</span>
+
+    <svg width="160" height="160" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Outer circle -->
+      <circle cx="90" cy="90" r="84" fill="none" stroke="#1428A0" stroke-width="1" opacity="0.15"/>
+      <circle cx="90" cy="90" r="84" fill="none" stroke="#4A90D9" stroke-width="0.8" stroke-dasharray="4 3" opacity="0.2" class="flow"/>
+
+      <!-- Inner filled circle -->
+      <circle cx="90" cy="90" r="70" fill="url(#badgeCircle)"/>
+      <circle cx="90" cy="90" r="70" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+
+      <!-- T inside badge -->
+      <rect x="42" y="64" width="96" height="20" rx="2" fill="rgba(255,255,255,0.18)"/>
+      <rect x="42" y="64" width="96" height="2.5" rx="1" fill="rgba(255,255,255,0.5)"/>
+      <rect x="80" y="84" width="20" height="52" rx="2" fill="rgba(255,255,255,0.18)"/>
+      <rect x="80" y="84" width="2" height="52" rx="1" fill="rgba(255,255,255,0.3)"/>
+      <circle cx="42"  cy="74" r="4" fill="white"/>
+      <circle cx="138" cy="74" r="4" fill="white"/>
+      <circle cx="90"  cy="64" r="5" fill="white"/>
+      <circle cx="90"  cy="64" r="2" fill="#4A90D9" class="breathe"/>
+
+      <!-- Arc text bottom -->
+      <path id="arc" d="M 34 108 A 64 64 0 0 0 146 108" fill="none"/>
+      <text font-family="'DM Sans',sans-serif" font-size="9" font-weight="600" letter-spacing="3.5" fill="rgba(255,255,255,0.7)">
+        <textPath href="#arc" startOffset="5%">ORCHESTRATION · RESOLUTION</textPath>
+      </text>
+
+      <!-- Top star -->
+      <circle cx="90" cy="20" r="3" fill="#C8DCFF" opacity="0.6"/>
+
+      <defs>
+        <radialGradient id="badgeCircle" cx="50%" cy="30%" r="70%">
+          <stop offset="0%"   stop-color="#1A34B8"/>
+          <stop offset="100%" stop-color="#0A1560"/>
+        </radialGradient>
+      </defs>
+    </svg>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <div class="card-wm-main">THOR</div>
+      <div class="card-wm-sub">AI-Powered Platform</div>
+    </div>
+  </div>
+
+  <!-- CARD 3: Icon only – large mark -->
+  <div class="card" style="justify-content:center;">
+    <span class="card-label">Icon · App Mark</span>
+
+    <!-- App icon square -->
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Rounded square background -->
+      <rect width="120" height="120" rx="28" fill="url(#appBg)"/>
+      <!-- Subtle inner glow -->
+      <rect width="120" height="120" rx="28" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+      <!-- Grid texture -->
+      <rect width="120" height="120" rx="28" fill="url(#gridPat)" opacity="0.06"/>
+
+      <!-- T inside app icon -->
+      <rect x="14" y="28" width="92" height="20" rx="2.5" fill="rgba(255,255,255,0.2)"/>
+      <rect x="14" y="28" width="92" height="3" rx="1" fill="rgba(255,255,255,0.55)"/>
+      <rect x="50" y="48" width="20" height="56" rx="2.5" fill="rgba(255,255,255,0.2)"/>
+      <rect x="50" y="48" width="2.5" height="56" rx="1" fill="rgba(255,255,255,0.35)"/>
+
+      <!-- Nodes -->
+      <circle cx="14"  cy="38" r="4.5" fill="white" opacity="0.9"/>
+      <circle cx="106" cy="38" r="4.5" fill="white" opacity="0.9"/>
+      <circle cx="60"  cy="28" r="5.5" fill="white"/>
+      <circle cx="60"  cy="28" r="2.5" fill="#4A90D9" class="breathe"/>
+      <circle cx="60"  cy="104" r="4"  fill="rgba(255,255,255,0)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+      <circle cx="60"  cy="104" r="1.5" fill="white" class="breathe"/>
+
+      <defs>
+        <linearGradient id="appBg" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
+          <stop offset="0%"   stop-color="#1A34B8"/>
+          <stop offset="100%" stop-color="#0A1560"/>
+        </linearGradient>
+        <pattern id="gridPat" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M20 0 L0 0 0 20" fill="none" stroke="white" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+    </svg>
+
+    <div style="font-size:10px;font-weight:500;letter-spacing:2px;color:var(--samsung-gray);text-transform:uppercase;text-align:center;">
+      App Icon · Favicon
+    </div>
+
+    <!-- Inline compact wordmark -->
+    <div style="display:flex;align-items:center;gap:12px;padding:16px 20px;background:var(--samsung-pale);border-radius:8px;width:100%;">
+      <svg width="28" height="28" viewBox="0 0 110 110" fill="none">
+        <rect x="4" y="22" width="102" height="24" rx="3" fill="#1428A0"/>
+        <rect x="4" y="22" width="102" height="3" rx="1" fill="rgba(74,144,217,0.6)"/>
+        <rect x="43" y="46" width="24" height="60" rx="3" fill="#1428A0"/>
+        <circle cx="4"   cy="34" r="5" fill="#1428A0"/>
+        <circle cx="106" cy="34" r="5" fill="#1428A0"/>
+        <circle cx="55"  cy="22" r="6" fill="white"/>
+        <circle cx="55"  cy="22" r="2.5" fill="#4A90D9"/>
+      </svg>
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;letter-spacing:5px;color:var(--samsung-blue3);">THOR</div>
+        <div style="font-size:8px;font-weight:500;letter-spacing:2.5px;color:var(--samsung-blue);text-transform:uppercase;">Platform</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
